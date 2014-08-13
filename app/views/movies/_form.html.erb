@@ -1,0 +1,27 @@
+<h1>FORM</h1>
+<p>Movie ID:<%= @movie.id %></p>
+
+<% if @movie.errors.any? %>
+	<ul>
+		<% @movie.errors.full_messages.each do |error_msg| %>
+			<li><%= error_msg %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<%= form_for [@movie] do |f| %>
+	<%= f.label :title %>
+	<%= f.text_field :title%>
+	<br>
+	<%= f.label :plot %>
+	<%= f.text_field :plot%>
+	<br>
+	<%= f.label :poster %>
+	<%= f.text_field :poster %>
+	<br>
+	<%= f.label :year %>
+	<%= f.number_field :year %>
+	<br>
+
+	<%= f.submit 'Save' %>
+<% end %>

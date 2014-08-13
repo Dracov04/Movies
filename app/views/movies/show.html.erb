@@ -1,0 +1,23 @@
+<h1>Movie <%= @movies.id%></h1>
+<ul>
+<li><%= @movies.title%></li>
+<%if @movies.poster? %>
+			<br><img src="<%= @movies.poster %>"/></br>
+		<%else%>
+		<br><img src="http://www.alpharoto.com/images/image_not_found.jpg"/></br>
+		<%end%>
+<li><%= @movies.year%></li>
+<li><% @movies.categories.each do |category|%>
+	<%= category.name %>, 
+<%end%>
+</li>
+
+<p><li><%= @movies.plot%></li></p>
+<p><li><% @movies.cast_members.each do |a|%>
+	<%= a.full_name %>, 
+	<%end%>
+</li></p>
+<p><li>Add your Review here: <%= link_to("Add review", new_movie_review_path(@movies)) %></li></p>
+<p><li>See all the reviews here: <%= link_to("See reviews",  movie_reviews_path(@movies)) %></li></p>
+<p><li>Return to your favourite  movies here: <%= link_to("Return", movies_path(@movies)) %></li></p>
+</ul>

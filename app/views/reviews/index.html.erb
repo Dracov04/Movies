@@ -1,0 +1,10 @@
+<h1>REVIEWS</h1>
+<%= @movie.title %>
+<br>
+<% @movie.reviews.each do |a| %>
+	<ul><%= a.reviewer %></ul>
+	<li><%= a.content %></li>
+	<li><%= a.created_at.strftime("%d %b. %Y") %></li>
+<% end %>
+<br>
+Return to the movie <%= link_to("here", movie_path(@movie)) %>

@@ -1,0 +1,5 @@
+<h1><%= @actor.full_name %></h1>
+<p><% @actor.movies.each do |c| %>
+	<li><%= c.title %></li>
+<% end %>
+</p>

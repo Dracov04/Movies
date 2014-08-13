@@ -1,0 +1,20 @@
+<h1>FORM REVIEW</h1>
+<p>Movie ID:<%= @movie.id %></p>
+
+<% if @review.errors.any? %>
+	<ul>
+		<% @review.errors.full_messages.each do |error_msg| %>
+			<li><%= error_msg %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<%= form_for [@movie, @review] do |f| %>
+	<%= f.label :reviewer %>
+	<%= f.text_field :reviewer%>
+	<br>
+	<%= f.label :content %>
+	<%= f.text_field :content%>
+
+	<button><%= f.submit 'Save' %></button>
+<% end %>

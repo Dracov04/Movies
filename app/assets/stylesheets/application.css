@@ -1,0 +1,39 @@
+body {
+	background-color: #1b11ad;
+	font-size: 2em;
+	font-family: Garamond, serif;
+	line-height: 1em;
+	color: #93ff54;
+	font-weight:bold;
+	text-shadow:0px 0px 0 rgb(86,194,23),1px 1px 0 rgb(35,143,-28),2px 2px 0 rgb(-16,92,-79),3px 3px 0 rgb(-67,41,-130),4px 4px 0 rgb(-118,-10,-181), 5px 5px 0 rgb(-169,-61,-232),6px 6px 5px rgba(0,0,0,0),6px 6px 1px rgba(0,0,0,0.5),0px 0px 5px rgba(0,0,0,.2);
+}
+img {
+	width: 160px;
+	height: 240px; 
+}
+
+button {
+	background-color: green;
+	padding: 0px;
+}
+
+a {
+text-decoration: none;
+font-family: Garamond, serif;
+line-height: 1em;
+color: #f2ff00;
+font-weight:bold;
+font-size: 1em;
+text-shadow:0px 0px 0 rgb(178,191,-64),1px 1px 0 rgb(115,128,-127),2px 2px 0 rgb(51,64,-191),3px 3px 0 rgb(-13,0,-255), 4px 4px 0 rgb(-77,-64,-319),5px 5px 4px rgba(0,0,0,1),5px 5px 1px rgba(0,0,0,0.5),0px 0px 4px rgba(0,0,0,.2);
+}
+
+#menu {
+	width:200px;
+	height:165px;
+	background-color: #00eeff;
+	right: 1em;
+	position:fixed;
+	text-align: center;
+	border-radius: 70px;
+	padding: 0;
+}
