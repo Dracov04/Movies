@@ -1,0 +1,5 @@
+<h1><%= @categories.name %></h1>
+<p><% @categories.movies.order(title: :asc).each do |c| %>
+	<li><%= link_to(c.title, movie_path(c.id)) %></li>
+<% end %>
+</p>

@@ -1,0 +1,10 @@
+<h1>SEARCH</h1>
+
+<ul><% @categories.each do |m| %>
+		<% m.movies.each do |a| %>
+			<li>
+				<%= link_to(a.title, movie_path(a)) %>
+			</li>
+		<%end%>
+	<% end %>
+</ul>
