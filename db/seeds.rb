@@ -16,10 +16,9 @@
 			#  	my_movie.cast_members << my_member
 			#  end
 			# end
-
-		search = Imdb::Search.new('Underworld')
-		@imdb = search.movies[0..5]
-
+		# search = Imdb::Search.new('a')
+		# @imdb = search.movies[0..20]
+		@imdb = Imdb::Top250.new.movies
 		@movies = @imdb.collect do |imdb|
 			movie = Movie.find_or_create_by(title: imdb.title, plot: imdb.plot, poster: imdb.poster, year: imdb.year)
 			imdb.genres.each do |genre|

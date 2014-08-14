@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :movies do
     collection do
       get :search
+      get :search_category
     end
 
     resources :reviews
@@ -26,6 +27,14 @@ Rails.application.routes.draw do
   end
 
   resources :cast_members do
+    resources :movies
+  end
+
+  resources :movies do
+    resources :categories
+  end
+
+  resources :categories do
     resources :movies
   end
 

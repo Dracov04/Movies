@@ -1,15 +1,31 @@
 <h1>INDEX</h1>
 
 <%= form_tag(search_movies_path, method: :get) do %>
-<%= text_field_tag('qwery') %>
+<%= text_field_tag('title') %>
 <%= submit_tag('Search') %>
 <% end %>
+<form accept-charset="UTF-8" action="/movies/search_category" method="get"><div style="display:none"><input name="utf8" type="hidden" value="✓"></div>
+	<input id="name" name="drama" type="checkbox">
+	Drama
+	<input id="name" name="horror" type="checkbox">
+	Horror
+	<input id="name" name="comedy" type="checkbox">
+	Comedy
+	<input id="name" name="history" type="checkbox">
+	History
+<input name="commit" type="submit" value="Search">
+</form>
+
+<!--<%= form_tag(search_category_movies_path, method: :get) do %>
+<%= text_field_tag('name') %>
+<%= submit_tag('Search') %>
+<% end %>-->
 
 <ul>	<% @movies.each do |a| %>
 	<li>
-		<%= link_to(a.title, movie_path(a.id)) %> -ID: <%= a.id %> -Counter: <%= a.counter %>
-		<p><%= link_to("Increase Counter", movie_increment_counter_path(a), method: :patch) %></p>
-		<p><%= link_to("Reduce Counter", movie_reduce_counter_path(a), method: :patch) %></p>
+		<%= link_to(a.title, movie_path(a.id)) %> -ID: <%= a.id %> -View: <%= a.counter %>
+		<p><%= link_to("View +1", movie_increment_counter_path(a), method: :patch) %></p>
+		<p><%= link_to("View -1", movie_reduce_counter_path(a), method: :patch) %></p>
 		<%if a.poster? %>
 			<br><%= link_to(image_tag(a.poster), movie_path(a)) %></br>
 		<%else%>
