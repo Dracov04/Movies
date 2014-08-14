@@ -44,9 +44,10 @@ ActiveRecord::Schema.define(version: 20140813074410) do
     t.text     "plot"
     t.string   "poster"
     t.integer  "year"
+    t.string   "trailer_url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "counter",    default: 0
+    t.integer  "counter",     default: 0
   end
 
   create_table "reviews", force: true do |t|

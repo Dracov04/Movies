@@ -5,6 +5,7 @@ class CreateMovies < ActiveRecord::Migration
       t.text :plot  
       t.string :poster
       t.integer :year
+      t.string :trailer_url
       t.timestamps
     end
   end

@@ -6,7 +6,8 @@ class MoviesController < ApplicationController
 	end
 
 	def show
-		@movies = Movie.find params[:id]
+		
+		@movie = Movie.find params[:id]
 		rescue
 			@movies = Movie.last_created_movies(10)
 	  		render 'error', layout: 'errorlayout'
@@ -81,9 +82,12 @@ class MoviesController < ApplicationController
 	 end
 
 	 def search_category
-		@categories = Category.where(["lower(name) LIKE (?)",'%' + params[:name].downcase + '%']).page params[:page]
+	 		sql = ""
+	 		params[:category].each do |category|
+	 		sql += ' OR ' if sql != ""
+	 			sql += "lower(name) LIKE ('%"+ category.downcase + "%') "
+	 		end
+
+		@categories = Category.where(sql).page params[:page]
 	 end
 end
-
-
-

@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'wombat'
+
 gem 'kaminari'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'

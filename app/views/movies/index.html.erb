@@ -4,15 +4,23 @@
 <%= text_field_tag('title') %>
 <%= submit_tag('Search') %>
 <% end %>
+
 <form accept-charset="UTF-8" action="/movies/search_category" method="get"><div style="display:none"><input name="utf8" type="hidden" value="✓"></div>
-	<input id="name" name="drama" type="checkbox">
+
+<%  Category.all.each do |category| %>
+    <%= check_box_tag 'category[]', category.name %> <%= category.name %> <br/>
+<% end %>
+
+	<!-- <input id="name" name="name[]" type="checkbox" value = "drama">
 	Drama
+	<%= check_box_tag "name", "Drama" %>
+       "Drama"
 	<input id="name" name="horror" type="checkbox">
 	Horror
 	<input id="name" name="comedy" type="checkbox">
 	Comedy
 	<input id="name" name="history" type="checkbox">
-	History
+	History -->
 <input name="commit" type="submit" value="Search">
 </form>
 
