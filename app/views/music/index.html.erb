@@ -1,20 +1,46 @@
-<head><meta charset="UTF-8"></head>
-
 <h1>Index</h1>
 <p>lista de canciones</p>
 <%= @al['get_buy_links'] %>
 <br>
 <img src="<%= @al['image'][3]['#text'] %>"/>
 <br>
-<ul>
-	<% @printar.each do |a| %>
-		<li><%= a['name'] %></li>
-		<li></li>
-	<% end %>
-</ul>
 
-
-<%= form_tag(search_song_index_path, method: :get) do %>
-<%= text_field_tag('title') %>
-<%= submit_tag('Search') %>
+<%= form_tag(search_category_music_index_path, method: :get) do %>
+<%= text_field_tag('category') %>
+<%= submit_tag('Search category') %>
 <% end %>
+
+<%= form_tag(search_song_music_index_path, method: :get) do %>
+<%= text_field_tag('title') %>
+<%= submit_tag('Search song') %>
+<% end %>
+
+You can choose between:
+<ul>
+<li>acoustic</li>
+<li>ambient</li>
+<li>blues</li>
+<li>classical</li>
+<li>country</li>
+<li>electronic</li>
+<li>emo</li>
+<li>folk</li>
+<li>hardcore</li>
+<li>hip hop</li>
+<li>indie</li>
+<li>jazz</li>
+<li>latin</li>
+<li>metal</li>
+<li>pop</li>
+<li>pop punk</li>
+<li>punk</li>
+<li>reggae</li>
+<li>rnb</li>
+<li>rock</li>
+<li>soul</li>
+<li>world</li>
+<li>60s</li>
+<li>70s</li>
+<li>80s</li>
+<li>90s</li>
+</ul>

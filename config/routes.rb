@@ -39,13 +39,14 @@ Rails.application.routes.draw do
   end
 
 # SONGS
-  resources :song do
+  resources :music do
     collection do
-      get :search
+      get :search_song
+      get :search_category
     end
   end
 
-  resources :music
+  resources :song
 
 
   # You can have the root of your site routed with "root"
