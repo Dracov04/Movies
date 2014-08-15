@@ -1,0 +1,20 @@
+<head><meta charset="UTF-8"></head>
+
+<h1>Index</h1>
+<p>lista de canciones</p>
+<%= @al['get_buy_links'] %>
+<br>
+<img src="<%= @al['image'][3]['#text'] %>"/>
+<br>
+<ul>
+	<% @printar.each do |a| %>
+		<li><%= a['name'] %></li>
+		<li></li>
+	<% end %>
+</ul>
+
+
+<%= form_tag(search_song_index_path, method: :get) do %>
+<%= text_field_tag('title') %>
+<%= submit_tag('Search') %>
+<% end %>

@@ -38,6 +38,16 @@ Rails.application.routes.draw do
     resources :movies
   end
 
+# SONGS
+  resources :song do
+    collection do
+      get :search
+    end
+  end
+
+  resources :music
+
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

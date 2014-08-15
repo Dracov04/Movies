@@ -8,6 +8,14 @@ class MoviesController < ApplicationController
 	def show
 		
 		@movie = Movie.find params[:id]
+
+		# require 'rubygems'
+		# require 'nokogiri'
+		# require 'open-uri'
+		   
+		# @page = Nokogiri::HTML(open(@movie.trailer_url))   
+		# @noko = @page.css('div.video-player-frame').to_s.html_safe
+
 		rescue
 			@movies = Movie.last_created_movies(10)
 	  		render 'error', layout: 'errorlayout'
