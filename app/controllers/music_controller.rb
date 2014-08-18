@@ -10,11 +10,14 @@ class MusicController < ApplicationController
 	end
 
 	def search_song
-		@search_song = LastFM::Track.search(:track => params[:title])
-		@track_first = @search_song['results']['trackmatches']['track'][0]
 
-		@page = Nokogiri::HTML(open(@track_first['url']))   
-		@noko = @page.css('div[class="wrapper"]').to_s.html_safe
+		 @search_song = LastFM::Track.search(:track => params[:title])
+		 @track_first = @search_song['results']['trackmatches']['track'][0]
+
+		 @page = Nokogiri::HTML(open(@track_first['url']))   
+		 @noko = @page.css('div[class="wrapper"]').to_s.html_safe
+
+		 		@lastFM_search_artist = LastFM::Artist.get_info(:artist => @track_first['artist'])	
 	end
 
 	def search_category
@@ -22,3 +25,6 @@ class MusicController < ApplicationController
 		@printar = @busqueda_artistas['topartists']['artist']
 	end
 end
+
+
+# http://www.azlyrics.com/lyrics/a/thedistance.html

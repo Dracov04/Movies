@@ -31,3 +31,25 @@
  		 		movie.cast_members << my_member
 			end
 		end
+		
+
+		@lastFM_search = LastFM::Track.search(:track => 'a')
+
+		@lastFM = @lastFM_search['results']['trackmatches']['track']
+
+		@songs = @lastFM.each do |track|
+			song = Song.find_or_create_by(title: track['name'], listeners: track['listeners'], video_url: track['url'])
+
+			@lastFM_search_artist = LastFM::Artist.get_info(:artist => track['artist'])
+
+			artist = Artist.find_or_create_by(name: track['artist'], info: @lastFM_search_artist['artist']['bio']['summary'].to_s.html_safe)
+
+			song.artist = artist
+
+			if @lastFM_search_artist['artist']['tags']['tag']
+		 		@lastFM_search_artist['artist']['tags']['tag'].each do |tag|
+		 			tag_obj = Tag.find_or_create_by name: tag['name']
+		 			artist.tags << tag_obj
+		 		end
+	 		end
+		 end

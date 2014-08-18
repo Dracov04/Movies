@@ -1,5 +1,4 @@
 <h1>Song</h1>
-
 <div>
 <h3>Title: <%= @track_first['name'] %></h3>
 <p>Artist: <%= @track_first['artist'] %></p>
@@ -7,3 +6,5 @@
 
 <%= @noko %>
 </div>
+
+<%= @lastFM_search_artist['artist']['bio']['summary'].to_s.html_safe %>
