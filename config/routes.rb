@@ -42,6 +42,7 @@ Rails.application.routes.draw do
 # SONGS
   resources :music do
     collection do
+      get :random_songs
       get :search_song
       get :search_category
     end

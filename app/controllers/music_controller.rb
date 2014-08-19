@@ -63,4 +63,10 @@ class MusicController < ApplicationController
 		# @busqueda_artistas = LastFM::Tag.get_top_artists(:tag => params[:category] )
 		# @printar = @busqueda_artistas['topartists']['artist']
 	end
+
+	def random_songs
+ 		@song = Song.find_by_id(rand(Song.count))
+		@page = Nokogiri::HTML(open(@song.video_url))
+		@noko = @page.css('div[class="wrapper"]').to_s.html_safe
+ 	end
 end

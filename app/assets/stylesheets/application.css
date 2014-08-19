@@ -65,13 +65,13 @@ img {
     position:absolute;
     top:0px;
     left:0px;
-    font-size:40px;
+    font-size:30px;
     line-height:36px;
     opacity:0;
 }
 .rotate span:nth-child(2){
     background:transparent url('http://fc03.deviantart.net/fs71/f/2012/040/2/3/batman_logo_3d_animation_by_syndikata_np-d4p71l4.gif') no-repeat center center;
-    opacity:0.9;
+    opacity:1;
     background-size:150px;
 }
 .rotate:hover{
@@ -101,6 +101,95 @@ img {
 }
 .rotate:active span:nth-child(1){
     color:rgba(170, 77, 27, 0.8);
+    text-shadow:0px 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+
+
+/*SONG BUTTON*/
+
+.rotate_song{
+    width:153px;
+    height:153px;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    border-radius:50%;
+    display:block;
+    margin:20px;
+    float:left;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(-1%,rgba(0,87,0,1)), color-stop(0%,rgba(180,221,180,1)), color-stop(0%,rgba(0,138,0,1)), color-stop(0%,rgba(0,87,0,1)), color-stop(0%,rgba(0,87,0,1)), color-stop(1%,rgba(0,138,0,1)), color-stop(1%,rgba(0,138,0,1)), color-stop(42%,rgba(0,138,0,1)), color-stop(59%,rgba(82,177,82,1)), color-stop(61%,rgba(82,177,82,1)), color-stop(95%,rgba(131,199,131,1)), color-stop(95%,rgba(131,199,131,1))); /* Chrome,Safari4+ */
+    position:relative;
+    padding-left: 5px;
+    -webkit-box-shadow:0px 0px 5px 0px rgba(246, 212, 163, 0.5) inset, 0px -1px 5px 4px rgba(170, 77, 27, 0.2) inset, 0px 0px 0px 7px #000,  0px 0px 1px 8px rgba(188, 188, 188, 0.4), 0px 0px 0px 9px #000;
+    -moz-box-shadow:0px 0px 5px 0px rgba(246, 212, 163, 0.5) inset, 0px -1px 5px 4px rgba(170, 77, 27, 0.2) inset, 0px 0px 0px 7px #000,  0px 0px 1px 8px rgba(188, 188, 188, 0.4), 0px 0px 0px 9px #000;
+    box-shadow:0px 0px 5px 0px rgba(246, 212, 163, 0.5) inset, 0px -1px 5px 4px rgba(170, 77, 27, 0.2) inset, 0px 0px 0px 7px #000,  0px 0px 1px 8px rgba(188, 188, 188, 0.4), 0px 0px 0px 9px #000;
+    -webkit-transition:all 0.3s linear;
+    -moz-transition:all 0.3s linear;
+    -o-transition:all 0.3s linear;
+    transition:all 0.3s linear;
+}
+.rotate_song span{
+    display:table-cell;
+    width:152px;
+    height:152px;
+    padding:20px;
+    text-align:center;
+    vertical-align:middle;
+    font-size:30px;
+    color:#fff;
+    text-shadow:0px 1px 1px #A03F16;
+    font-family:"Arvo", "Myriad Pro", "Trebuchet MS", sans-serif;
+    -webkit-transition:all 0.3s linear;
+    -moz-transition:all 0.3s linear;
+    -o-transition:all 0.3s linear;
+    transition:all 0.3s linear;
+}
+
+.rotate_song span:nth-child(1){
+    opacity:1;
+}
+
+.rotate_song span:nth-child(2), 
+.rotate_song span:nth-child(3){
+    position:absolute;
+    top:0px;
+    left:0px;
+    font-size:30px;
+    line-height:36px;
+    opacity:0;
+}
+.rotate_song span:nth-child(2){
+    background:transparent url('http://static.tumblr.com/2dea32491f7c0155e2da4b10c9283487/1rbjzdn/cbZn7evtg/tumblr_static_5afzy9gguvgookosok8wc4goo.gif') no-repeat center center;
+    opacity:1;
+    background-size:117px;
+}
+.rotate_song:hover{
+    background: rgba(0, 123, 0, 1);
+    -webkit-box-shadow:0px 0px 5px 0px rgba(0, 83, 0, 1) inset, 0px -1px 5px 4px rgba(0, 83, 0, 1) inset, 0px 0px 0px 7px rgba(0, 83, 0, 1),  1px 4px 5px 8px #fff, 0px 0px 0px 9px rgba(0, 83, 0, 1);
+    -moz-box-shadow:0px 0px 5px 0px rgba(0, 83, 0, 1) inset, 0px -1px 5px 4px rgba(0, 83, 0, 1) inset, 0px 0px 0px 7px rgba(0, 83, 0, 1),  1px 4px 5px 8px #fff, 0px 0px 0px 9px rgba(0, 83, 0, 1);
+    box-shadow:0px 0px 5px 0px rgba(0, 83, 0, 1) inset, 0px -1px 5px 4px rgba(0, 83, 0, 1) inset, 0px 0px 0px 7px rgba(0, 83, 0, 1),  1px 4px 5px 8px #fff, 0px 0px 0px 9px rgba(0, 83, 0, 1);
+}
+.rotate_song:hover span:nth-child(3){
+    opacity:1;
+}
+.rotate_song:hover span:nth-child(1){
+    opacity: 0; 
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    transform: scale(0);
+}
+.rotate_song:hover span:nth-child(2){
+    -webkit-animation:rotate 1s linear;
+    -moz-animation:rotate 1s linear;
+    animation:rotate 1s linear;
+}
+.rotate_song:active{
+    -webkit-box-shadow:0px 0px 5px 0px rgba(246, 212, 163, 0.5) inset, 0px -1px 5px 4px rgba(170, 77, 27, 0.2) inset, 0px 0px 0px 7px #fff,  0px -1px 0px 8px rgba(188, 188, 188, 0.3), 0px 0px 0px 10px #fff;
+    -moz-box-shadow:0px 0px 5px 0px rgba(246, 212, 163, 0.5) inset, 0px -1px 5px 4px rgba(170, 77, 27, 0.2) inset, 0px 0px 0px 7px #fff,  0px -1px 0px 8px rgba(188, 188, 188, 0.3), 0px 0px 0px 10px #fff;
+    box-shadow:0px 0px 5px 0px rgba(246, 212, 163, 0.5) inset, 0px -1px 5px 4px rgba(170, 77, 27, 0.2) inset, 0px 0px 0px 7px #fff,  0px -1px 0px 8px rgba(188, 188, 188, 0.3), 0px 0px 0px 10px #fff;
+}
+.rotate_song:active span:nth-child(1){
+    background-color: rgba(0, 123, 0, 1);
     text-shadow:0px 1px 1px rgba(255, 255, 255, 0.6);
 }
 @keyframes rotate{

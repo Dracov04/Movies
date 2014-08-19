@@ -1,0 +1,13 @@
+<h1>Song</h1>
+<div>
+<h3>Title: <%= @song.title %></h3>
+<p>Artist: <%= link_to(@song.artist.name, artist_path(@song.artist)) %></p>
+<p>Categories: <% @song.artist.tags[0..@song.artist.tags.length - 2].each do |tag| %>
+	<%= tag.name %>, 
+<% end %>
+<%= @song.artist.tags.last.name %>.
+</p>
+<p>Number of listeners: <%= @song.listeners %></p>
+
+<%= @noko %>
+</div>
