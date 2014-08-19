@@ -4,17 +4,17 @@
 <br>
 <img src="<%= @al['image'][3]['#text'] %>"/>
 <br>
-
+<!-- 
 <%= form_tag(search_category_music_index_path, method: :get) do %>
 <%= text_field_tag('category') %>
 <%= submit_tag('Search category') %>
-<% end %>
+<% end %> -->
 
 <%= form_tag(search_song_music_index_path, method: :get) do %>
 <%= text_field_tag('title') %>
 <%= submit_tag('Search song') %>
 <% end %>
-
+<!-- 
 You can choose between:
 <ul>
 <li>acoustic</li>
@@ -44,3 +44,12 @@ You can choose between:
 <li>80s</li>
 <li>90s</li>
 </ul>
+ -->
+<form accept-charset="UTF-8" action="/music/search_category" method="get"><div style="display:none"><input name="utf8" type="hidden" value="✓"></div>
+
+<%  Tag.all.each do |tag| %>
+    <%= check_box_tag 'tag[]', tag.name %> <%= tag.name %> <br/>
+<% end %>
+
+<input name="commit" type="submit" value="Search">
+</form>

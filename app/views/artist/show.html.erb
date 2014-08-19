@@ -1,0 +1,17 @@
+<h1>Artist</h1>
+<div>
+<h3>Name: <%= @artist.name %></h3>
+<p>Information: <%= @artist.info.to_s.html_safe %></p>
+<p>Categories: <% @artist.tags[0..@artist.tags.length - 2].each do |tag| %>
+	<%= tag.name %>, 
+<% end %>
+<%= @artist.tags.last.name %>.
+</p>
+
+<p>Songs: <% @artist.songs[0..@artist.songs.length - 2].each do |song| %>
+	<%= link_to(song.title, song_path(song)) %>, 
+<% end %>
+<%= @artist.songs.last.title %>.
+</p>
+
+</div>

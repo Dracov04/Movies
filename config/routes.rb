@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :movies do
     collection do
+      get :random_movies
       get :search
       get :search_category
     end
@@ -46,7 +47,21 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :song
+  resources :song do
+    resources :artist
+  end
+
+  resources :artist do
+    resources :songs
+  end
+
+  resources :artist do
+    resources :tags
+  end
+
+  resources :tags do
+    resources :artist
+  end
 
 
   # You can have the root of your site routed with "root"

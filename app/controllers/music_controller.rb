@@ -11,20 +11,56 @@ class MusicController < ApplicationController
 
 	def search_song
 
-		 @search_song = LastFM::Track.search(:track => params[:title])
-		 @track_first = @search_song['results']['trackmatches']['track'][0]
+		# @songs = Song.where(["lower(title) LIKE (?)",'%' + params[:title].downcase + '%'])
 
-		 @page = Nokogiri::HTML(open(@track_first['url']))   
+		# @song = @songs.first
+
+		# @page = Nokogiri::HTML(open(@song.video_url))
+		# @noko = @page.css('div[class="wrapper"]').to_s.html_safe
+
+
+		@lastFM_search = LastFM::Track.search(:track => params[:title])
+
+		@lastFM = @lastFM_search['results']['trackmatches']['track']
+
+		@songs = @lastFM.map do |track|
+			song = Song.find_or_create_by(title: track['name'], listeners: track['listeners'], video_url: track['url'])
+
+			@lastFM_search_artist = LastFM::Artist.get_info(:artist => track['artist'])
+
+			artist = Artist.find_or_create_by(name: track['artist'], info: @lastFM_search_artist['artist']['bio']['summary'])
+
+			song.artist = artist
+
+			if @lastFM_search_artist['artist']['tags']['tag']
+		 		@lastFM_search_artist['artist']['tags']['tag'].each do |tag|
+		 			tag_obj = Tag.find_or_create_by name: tag['name']
+		 			if artist.tags[3]
+		 				artist.tags
+		 			else
+		 				artist.tags << tag_obj
+		 			end
+		 		end
+	 		end
+	 		song.save
+	 		song
+		 end
+		 @song = @songs.first
+
+		 @page = Nokogiri::HTML(open(@song.video_url))
 		 @noko = @page.css('div[class="wrapper"]').to_s.html_safe
-
-		 		@lastFM_search_artist = LastFM::Artist.get_info(:artist => @track_first['artist'])	
 	end
 
 	def search_category
-		@busqueda_artistas = LastFM::Tag.get_top_artists(:tag => params[:category] )
-		@printar = @busqueda_artistas['topartists']['artist']
+		sql = ""
+ 		params[:tag].each do |tag|
+ 		sql += ' OR ' if sql != ""
+ 			sql += "lower(name) LIKE ('%"+ tag.downcase + "%') "
+ 		end
+
+		@tags = Tag.where(sql)
+
+		# @busqueda_artistas = LastFM::Tag.get_top_artists(:tag => params[:category] )
+		# @printar = @busqueda_artistas['topartists']['artist']
 	end
 end
-
-
-# http://www.azlyrics.com/lyrics/a/thedistance.html

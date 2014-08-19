@@ -1,7 +1,11 @@
 <h1>Category</h1>
 
 <ul>
-	<% @printar.each do |a| %>
-		<li><%= a['name'] %></li>
+	<% @tags.each do |a| %>
+		<% a.artists.each do |artist| %>
+			<li>
+				<%= link_to(artist.name, artist_path(artist)) %>
+			</li>
+		<%end%>
 	<% end %>
 </ul>

@@ -1,30 +1,11 @@
-body {
-	background-color: #1b11ad;
-	font-size: 2em;
-	font-family: Garamond, serif;
-	line-height: 1em;
-	color: #93ff54;
-	font-weight:bold;
-	text-shadow:0px 0px 0 rgb(86,194,23),1px 1px 0 rgb(35,143,-28),2px 2px 0 rgb(-16,92,-79),3px 3px 0 rgb(-67,41,-130),4px 4px 0 rgb(-118,-10,-181), 5px 5px 0 rgb(-169,-61,-232),6px 6px 5px rgba(0,0,0,0),6px 6px 1px rgba(0,0,0,0.5),0px 0px 5px rgba(0,0,0,.2);
+/*=require foundation.css*/
+article {
+	margin-top:45px;
 }
+
 img {
 	width: 160px;
 	height: 240px; 
-}
-
-button {
-	background-color: green;
-	padding: 0px;
-}
-
-a {
-text-decoration: none;
-font-family: Garamond, serif;
-line-height: 1em;
-color: #f2ff00;
-font-weight:bold;
-font-size: 1em;
-text-shadow:0px 0px 0 rgb(178,191,-64),1px 1px 0 rgb(115,128,-127),2px 2px 0 rgb(51,64,-191),3px 3px 0 rgb(-13,0,-255), 4px 4px 0 rgb(-77,-64,-319),5px 5px 4px rgba(0,0,0,1),5px 5px 1px rgba(0,0,0,0.5),0px 0px 4px rgba(0,0,0,.2);
 }
 
 #menu {
@@ -36,4 +17,104 @@ text-shadow:0px 0px 0 rgb(178,191,-64),1px 1px 0 rgb(115,128,-127),2px 2px 0 rgb
 	text-align: center;
 	border-radius: 70px;
 	padding: 0;
+}
+
+.rotate{
+    width:153px;
+    height:153px;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    border-radius:50%;
+    display:block;
+    margin:20px;
+    float:left;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(30,87,153,1)), color-stop(100%,rgba(125,185,232,0))); /* Chrome,Safari4+ */;
+    position:relative;
+    padding-left: 5px;
+    -webkit-box-shadow:0px 0px 5px 0px rgba(246, 212, 163, 0.5) inset, 0px -1px 5px 4px rgba(170, 77, 27, 0.2) inset, 0px 0px 0px 7px #000,  0px 0px 1px 8px rgba(188, 188, 188, 0.4), 0px 0px 0px 9px #000;
+    -moz-box-shadow:0px 0px 5px 0px rgba(246, 212, 163, 0.5) inset, 0px -1px 5px 4px rgba(170, 77, 27, 0.2) inset, 0px 0px 0px 7px #000,  0px 0px 1px 8px rgba(188, 188, 188, 0.4), 0px 0px 0px 9px #000;
+    box-shadow:0px 0px 5px 0px rgba(246, 212, 163, 0.5) inset, 0px -1px 5px 4px rgba(170, 77, 27, 0.2) inset, 0px 0px 0px 7px #000,  0px 0px 1px 8px rgba(188, 188, 188, 0.4), 0px 0px 0px 9px #000;
+    -webkit-transition:all 0.3s linear;
+    -moz-transition:all 0.3s linear;
+    -o-transition:all 0.3s linear;
+    transition:all 0.3s linear;
+}
+.rotate span{
+    display:table-cell;
+    width:152px;
+    height:152px;
+    padding:20px;
+    text-align:center;
+    vertical-align:middle;
+    font-size:30px;
+    color:#fff;
+    text-shadow:0px 1px 1px #A03F16;
+    font-family:"Arvo", "Myriad Pro", "Trebuchet MS", sans-serif;
+    -webkit-transition:all 0.3s linear;
+    -moz-transition:all 0.3s linear;
+    -o-transition:all 0.3s linear;
+    transition:all 0.3s linear;
+}
+
+.rotate span:nth-child(1){
+	opacity:1;
+}
+
+.rotate span:nth-child(2), 
+.rotate span:nth-child(3){
+    position:absolute;
+    top:0px;
+    left:0px;
+    font-size:40px;
+    line-height:36px;
+    opacity:0;
+}
+.rotate span:nth-child(2){
+    background:transparent url('http://fc03.deviantart.net/fs71/f/2012/040/2/3/batman_logo_3d_animation_by_syndikata_np-d4p71l4.gif') no-repeat center center;
+    opacity:0.9;
+    background-size:150px;
+}
+.rotate:hover{
+    background-color: rgba(39, 209, 178, 0.7);
+    -webkit-box-shadow:0px 0px 5px 0px rgba(246, 212, 163, 0.5) inset, 0px -1px 5px 4px rgba(170, 77, 27, 0.2) inset, 0px 0px 0px 7px #fff,  1px 4px 5px 8px rgba(188, 188, 188, 0.6), 0px 0px 0px 9px #fff;
+    -moz-box-shadow:0px 0px 5px 0px rgba(246, 212, 163, 0.5) inset, 0px -1px 5px 4px rgba(170, 77, 27, 0.2) inset, 0px 0px 0px 7px #fff,  1px 4px 5px 8px rgba(188, 188, 188, 0.6), 0px 0px 0px 9px #fff;
+    box-shadow:0px 0px 5px 0px rgba(246, 212, 163, 0.5) inset, 0px -1px 5px 4px rgba(170, 77, 27, 0.2) inset, 0px 0px 0px 7px #fff,  1px 4px 5px 8px rgba(188, 188, 188, 0.6), 0px 0px 0px 9px #fff;
+}
+.rotate:hover span:nth-child(3){
+    opacity:1;
+}
+.rotate:hover span:nth-child(1){
+    opacity: 0; 
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    transform: scale(0);
+}
+.rotate:hover span:nth-child(2){
+    -webkit-animation:rotate 1s linear;
+    -moz-animation:rotate 1s linear;
+    animation:rotate 1s linear;
+}
+.rotate:active{
+    -webkit-box-shadow:0px 0px 5px 0px rgba(246, 212, 163, 0.5) inset, 0px -1px 5px 4px rgba(170, 77, 27, 0.2) inset, 0px 0px 0px 7px #fff,  0px -1px 0px 8px rgba(188, 188, 188, 0.3), 0px 0px 0px 10px #fff;
+    -moz-box-shadow:0px 0px 5px 0px rgba(246, 212, 163, 0.5) inset, 0px -1px 5px 4px rgba(170, 77, 27, 0.2) inset, 0px 0px 0px 7px #fff,  0px -1px 0px 8px rgba(188, 188, 188, 0.3), 0px 0px 0px 10px #fff;
+    box-shadow:0px 0px 5px 0px rgba(246, 212, 163, 0.5) inset, 0px -1px 5px 4px rgba(170, 77, 27, 0.2) inset, 0px 0px 0px 7px #fff,  0px -1px 0px 8px rgba(188, 188, 188, 0.3), 0px 0px 0px 10px #fff;
+}
+.rotate:active span:nth-child(1){
+    color:rgba(170, 77, 27, 0.8);
+    text-shadow:0px 1px 1px rgba(255, 255, 255, 0.6);
+}
+@keyframes rotate{
+    0% { transform: scale(1) rotate(0);}
+    50% { transform: scale(0.5) rotate(180deg);}
+    100% { transform: scale(1) rotate(360deg);}
+}
+@-webkit-keyframes rotate{
+    0% { -webkit-transform: scale(1) rotate(0);}
+    50% { -webkit-transform: scale(0.5) rotate(180deg);}
+    100% { -webkit-transform: scale(1) rotate(360deg);}
+}
+@-moz-keyframes rotate{
+    0% { -moz-transform: scale(1) rotate(0);}
+    50% { -moz-transform: scale(0.5) rotate(180deg);}
+    100% { -moz-transform: scale(1) rotate(360deg);}
 }

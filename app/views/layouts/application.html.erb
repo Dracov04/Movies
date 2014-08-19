@@ -7,12 +7,43 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div id="menu">
-		<p><%= link_to("Movie list", movies_path) %></p>
-		<p><%= link_to("Actors list", cast_members_path) %></p>
+	<div class="fixed">
+		<nav class="top-bar" data-topbar>
+			<ul class="title-area">
+	    		<li class="name">
+	    			<h1><a href="/">What Can I Do</a></h1>
+	    		</li>
+	<!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+	    		<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+			</ul>
+
+			<section class="top-bar-section">
+	<!-- Left Nav Section -->
+		    	<ul class="left show-for-large-up">
+		    		<li class="has-dropdown not-click">
+		        		<a href="#">Menu</a>
+		        		<ul class="dropdown">
+		        			<li><%= link_to("Music", music_index_path) %></li>
+		        			<li class="has-dropdown not-click"><%= link_to("Movies", movies_path) %>
+		        				<ul class="dropdown">
+		        					<li><%= link_to("Movie list", movies_path) %></li>
+		        					<li><%= link_to("Actors list", cast_members_path) %></li>
+		        					<li><%= link_to("Categories", categories_path) %></li>
+		        				</ul>
+		        			</li>
+		        			</ul>
+		    		</li>
+		    	</ul>
+
+	<!-- Right Nav Section -->
+		    	<ul class="right">
+		    		
+		    	</ul>
+			</section>
+		</nav>
 	</div>
-
-	<%= yield %>
-
+	<article>
+		<%= yield %>
+	</article>
 </body>
 </html>

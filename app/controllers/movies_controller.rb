@@ -89,13 +89,17 @@ class MoviesController < ApplicationController
 	# 	render 'index'
 	 end
 
-	 def search_category
-	 		sql = ""
-	 		params[:category].each do |category|
-	 		sql += ' OR ' if sql != ""
-	 			sql += "lower(name) LIKE ('%"+ category.downcase + "%') "
-	 		end
+	def search_category
+ 		sql = ""
+ 		params[:category].each do |category|
+ 		sql += ' OR ' if sql != ""
+ 			sql += "lower(name) LIKE ('%"+ category.downcase + "%') "
+ 		end
 
 		@categories = Category.where(sql).page params[:page]
-	 end
+	end
+
+ 	def random_movies
+ 		@movie = Movie.find_by_id(rand(Movie.count))
+ 	end
 end
