@@ -6,6 +6,10 @@ class Movie < ActiveRecord::Base
 	validates :poster, presence: {message: "Error, there isn't any poster"}
 	validates :title, uniqueness: {message: "Error, there is a movie with this title"}
 
+	scope :search, ->(title) {
+		where(["lower(title) LIKE (?)","%#{title.downcase}%"])
+	}
+
 	def self.last_created_movies(n)
 		movie = order(created_at: :desc).limit(n)
 		unless movie.present?

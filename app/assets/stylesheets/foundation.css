@@ -2112,6 +2112,34 @@ meta.foundation-mq-topbar {
     text-align: center;
     padding: 1.25rem 1.25rem 0; }
 
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg); }
+
+  to {
+    -webkit-transform: rotate(360deg); } }
+
+@-moz-keyframes rotate {
+  from {
+    -moz-transform: rotate(0deg); }
+
+  to {
+    -moz-transform: rotate(360deg); } }
+
+@-o-keyframes rotate {
+  from {
+    -o-transform: rotate(0deg); }
+
+  to {
+    -o-transform: rotate(360deg); } }
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg); }
+
+  to {
+    transform: rotate(360deg); } }
+
 /* Orbit Graceful Loading */
 .slideshow-wrapper {
   position: relative; }
@@ -4617,9 +4645,9 @@ textarea {
   display: block;
   font-size: 0.875rem;
   margin: 0 0 1rem 0;
-  padding: 0.2rem;
-  height: 2.200rem;
-  width: 200px;
+  padding: 0.5rem;
+  height: 2.3125rem;
+  width: 100%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -5690,5 +5718,3 @@ th.hide-for-touch {
 
   th.show-for-print {
     display: table-cell !important; } }
-
-

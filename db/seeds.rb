@@ -3,6 +3,8 @@
 #
 # Examples:
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# SEARCH BY TITLE
 			# require 'imdb'
 
 			# search = Imdb::Search.new("Underworld")
@@ -16,45 +18,50 @@
 			#  	my_movie.cast_members << my_member
 			#  end
 			# end
-		# search = Imdb::Search.new('a')
-		# @imdb = search.movies[0..20]
-		 @imdb = Imdb::Top250.new.movies
-		 @movies = @imdb.collect do |imdb|
-		 	movie = Movie.find_or_create_by(title: imdb.title, plot: imdb.plot, poster: imdb.poster, year: imdb.year, trailer_url: imdb.trailer_url)
-		 	imdb.genres.each do |genre|
-		 		category = Category.find_or_create_by name: genre
-		 		movie.categories << category
-		 	end
 
-		 	imdb.cast_members.each do |imdb_member|	
-		 	 	my_member = CastMember.find_or_create_by full_name: imdb_member
- 	 	 		movie.cast_members << my_member
-		 	end
-		 end
+# SEARCH BY TITLE AND 250
+
+		#  search = Imdb::Search.new('a')
+		#  @imdb = search.movies[0..20]
+		#  # @imdb = Imdb::Top250.new.movies
+		#  @movies = @imdb.collect do |imdb|
+		#  	movie = Movie.find_or_create_by(title: imdb.title, plot: imdb.plot, poster: imdb.poster, year: imdb.year, trailer_url: imdb.trailer_url)
+		#  	imdb.genres.each do |genre|
+		#  		category = Category.find_or_create_by name: genre
+		#  		movie.categories << category
+		#  	end
+
+		#  	imdb.cast_members.each do |imdb_member|	
+		#  	 	my_member = CastMember.find_or_create_by full_name: imdb_member
+ 	#  	 		movie.cast_members << my_member
+		#  	end
+		#  end
 		
 
-		@lastFM_search = LastFM::Track.search(:track => 'a')
+# SEARCH BY TITLE SONG
 
-		@lastFM = @lastFM_search['results']['trackmatches']['track']
+		# @lastFM_search = LastFM::Track.search(:track => 'a')
 
-		@songs = @lastFM.each do |track|
-			song = Song.find_or_create_by(title: track['name'], listeners: track['listeners'], video_url: track['url'])
+		# @lastFM = @lastFM_search['results']['trackmatches']['track']
 
-			@lastFM_search_artist = LastFM::Artist.get_info(:artist => track['artist'])
+		# @songs = @lastFM.each do |track|
+		# 	song = Song.find_or_create_by(title: track['name'], listeners: track['listeners'], video_url: track['url'])
 
-			artist = Artist.find_or_create_by(name: track['artist'], info: @lastFM_search_artist['artist']['bio']['summary'])
+		# 	@lastFM_search_artist = LastFM::Artist.get_info(:artist => track['artist'])
 
-			song.artist = artist
+		# 	artist = Artist.find_or_create_by(name: track['artist'], info: @lastFM_search_artist['artist']['bio']['summary'])
 
-			if @lastFM_search_artist['artist']['tags']['tag']
-		 		@lastFM_search_artist['artist']['tags']['tag'].each do |tag|
-		 			tag_obj = Tag.find_or_create_by name: tag['name']
-		 			if artist.tags[3]
-		 				artist.tags
-		 			else
-		 				artist.tags << tag_obj
-		 			end
-		 		end
-	 		end
-	 		song.save
-		 end
+		# 	song.artist = artist
+
+		# 	if @lastFM_search_artist['artist']['tags']['tag']
+		#  		@lastFM_search_artist['artist']['tags']['tag'].each do |tag|
+		#  			tag_obj = Tag.find_or_create_by name: tag['name']
+		#  			if artist.tags[3]
+		#  				artist.tags
+		#  			else
+		#  				artist.tags << tag_obj
+		#  			end
+		#  		end
+	 # 		end
+	 # 		song.save
+		#  end

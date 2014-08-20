@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   # get '/movies' => 'movie#index'
   # get '/movies/:id' => 'movie#show'
   get '/actor/:full_name' => 'cast_members#show_by_name', as: 'name'
-  get '/' => 'movies#principal'
+  #get '/' => 'movies#principal'
+  root 'movies#index'
   # get '/actor' => 'cast_member#index'
   
 
@@ -17,10 +18,12 @@ Rails.application.routes.draw do
       get :search_category
     end
 
-    resources :reviews
+    member do
+      patch :reduce_counter
+      patch :increment_counter
+    end
 
-    patch :reduce_counter
-    patch :increment_counter
+    resources :reviews
   end
 
   resources :movies do

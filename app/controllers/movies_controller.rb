@@ -1,24 +1,18 @@
 class MoviesController < ApplicationController
-	require 'kaminari'
+	before_action :set_movie, only: [:edit, :update, :destroy, :increment_counter, :reduce_counter]
+
 	def index
-		#@movies = Movie.last_created_movies(10).order(counter: :asc)
 		@movies = Movie.all.order(counter: :asc).order(year: :desc).page params[:page]
 	end
 
 	def show
-		
-		@movie = Movie.find params[:id]
+		@movie = Movie.find_by(id: params[:id])
 
-		# require 'rubygems'
-		# require 'nokogiri'
-		# require 'open-uri'
-		   
-		# @page = Nokogiri::HTML(open(@movie.trailer_url))   
-		# @noko = @page.css('div.video-player-frame').to_s.html_safe
-
-		rescue
+		unless @movie.present?
 			@movies = Movie.last_created_movies(10)
+
 	  		render 'error', layout: 'errorlayout'
+		end
 	end
 
 	def principal
@@ -26,49 +20,38 @@ class MoviesController < ApplicationController
 	end
 
 	def edit
-		@movie = Movie.find params[:id]
+		
 	end
 
 	def update
-		@movie = Movie.find params[:id]
-
 		if @movie.update_attributes movie_params
 			redirect_to action: 'index', controller: 'movies', movie_id: @movie.id
+			#redirect_to @movie
+			#redirect_to movies_path
 		else
 			render 'edit'
 		end
 	end
 
 	def destroy
-		@movie = Movie.find params[:id]
 		@movie.destroy
 		redirect_to action: 'index', controller: 'movies', movie_id: @movie.id
 	end
 
 	def reduce_counter
-		@movie = Movie.find params[:movie_id]
-
-		unless @movie.update(counter: @movie.counter - 1)
-		end
+		@movie.update(counter: @movie.counter - 1)
 
 		redirect_to movies_path
 	end
 
 	def increment_counter
-		@movie = Movie.find params[:movie_id]
-
-		unless @movie.update(counter: @movie.counter + 1)
-		end
+		@movie.update(counter: @movie.counter + 1)
 
 		redirect_to movies_path
 	end
 
-	def movie_params
-		params.require(:movie).permit(:title, :plot, :poster, :year)
-	end
-
 	def search
-		@movies = Movie.where(["lower(title) LIKE (?)",'%' + params[:title].downcase + '%']).page params[:page]
+		@movies = Movie.search(params[:title]).page params[:page]
 	# 	search = Imdb::Search.new params[:qwery]
 	# 	@imdb = search.movies[0..10]
 
@@ -90,16 +73,19 @@ class MoviesController < ApplicationController
 	 end
 
 	def search_category
- 		sql = ""
- 		params[:category].each do |category|
- 		sql += ' OR ' if sql != ""
- 			sql += "lower(name) LIKE ('%"+ category.downcase + "%') "
- 		end
-
-		@categories = Category.where(sql).page params[:page]
+		@categories = Category.where(name: params[:category]).page(params[:page])
 	end
 
  	def random_movies
  		@movie = Movie.find_by_id(rand(Movie.count))
  	end
+
+ 	private
+ 	def set_movie
+ 		@movie = Movie.find params[:id]
+ 	end
+
+ 	def movie_params
+		params.require(:movie).permit(:title, :plot, :poster, :year)
+	end
 end
