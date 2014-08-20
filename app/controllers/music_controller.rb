@@ -10,45 +10,50 @@ class MusicController < ApplicationController
 	end
 
 	def search_song
+		@songs = Song.where(["lower(title) LIKE (?)",'%' + params[:title].downcase + '%'])
 
-		# @songs = Song.where(["lower(title) LIKE (?)",'%' + params[:title].downcase + '%'])
+		if @songs != []
+			@songs
+		else
+			# @songs = Song.where(["lower(title) LIKE (?)",'%' + params[:title].downcase + '%'])
 
-		# @song = @songs.first
+			# @song = @songs.first
 
-		# @page = Nokogiri::HTML(open(@song.video_url))
-		# @noko = @page.css('div[class="wrapper"]').to_s.html_safe
+			# @page = Nokogiri::HTML(open(@song.video_url))
+			# @noko = @page.css('div[class="wrapper"]').to_s.html_safe
 
 
-		@lastFM_search = LastFM::Track.search(:track => params[:title])
+			@lastFM_search = LastFM::Track.search(:track => params[:title])
 
-		@lastFM = @lastFM_search['results']['trackmatches']['track']
+			@lastFM = @lastFM_search['results']['trackmatches']['track']
 
-		@songs = @lastFM.map do |track|
-			song = Song.find_or_create_by(title: track['name'], listeners: track['listeners'], video_url: track['url'])
+			@songs = @lastFM.map do |track|
+				song = Song.find_or_create_by(title: track['name'], listeners: track['listeners'], video_url: track['url'])
 
-			@lastFM_search_artist = LastFM::Artist.get_info(:artist => track['artist'])
+				@lastFM_search_artist = LastFM::Artist.get_info(:artist => track['artist'])
 
-			artist = Artist.find_or_create_by(name: track['artist'], info: @lastFM_search_artist['artist']['bio']['summary'])
+				artist = Artist.find_or_create_by(name: track['artist'], info: @lastFM_search_artist['artist']['bio']['summary'])
 
-			song.artist = artist
+				song.artist = artist
 
-			if @lastFM_search_artist['artist']['tags']['tag']
-		 		@lastFM_search_artist['artist']['tags']['tag'].each do |tag|
-		 			tag_obj = Tag.find_or_create_by name: tag['name']
-		 			if artist.tags[3]
-		 				artist.tags
-		 			else
-		 				artist.tags << tag_obj
-		 			end
+				if @lastFM_search_artist['artist']['tags']['tag']
+			 		@lastFM_search_artist['artist']['tags']['tag'].each do |tag|
+			 			tag_obj = Tag.find_or_create_by name: tag['name']
+			 			if artist.tags[3]
+			 				artist.tags
+			 			else
+			 				artist.tags << tag_obj
+			 			end
+			 		end
 		 		end
+		 		song.save
+		 		song
 	 		end
-	 		song.save
-	 		song
-		 end
-		 @song = @songs.first
+		end
+		@song = @songs.first
 
-		 @page = Nokogiri::HTML(open(@song.video_url))
-		 @noko = @page.css('div[class="wrapper"]').to_s.html_safe
+		@page = Nokogiri::HTML(open(@song.video_url))
+		@noko = @page.css('div[class="wrapper"]').to_s.html_safe
 	end
 
 	def search_category
