@@ -7,13 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div class="fixed">
 		<nav class="top-bar" data-topbar>
 			<ul class="title-area">
 	    		<li class="name">
 	    			<h1><%= link_to('What Can I Do', root_path) %></h1>
 	    		</li>
 	<!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-	    		<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+	    		<li class="toggle-topbar menu-icon"><a><span>Menu</span></a></li>
 			</ul>
 			
 			<section class="top-bar-section">
@@ -37,6 +38,7 @@
 		    		<li><%= link_to("Music", music_index_path) %></li>
 		    		<li class="divider"></li>
 		    	</ul>
+		    </div>
 
 
 	<!-- Right Nav Section -->
@@ -49,7 +51,7 @@
 	<article>
 		<%= yield %>
 	</article>
-	<footer class='text-center' >
+	<footer class='text-center'>
 		<p>Ironhack Project | What Can I Do & Co.</p>
 	</footer>
 	<script>$(document).foundation();</script>

@@ -1,7 +1,7 @@
 /*=require foundation.css*/
-article {
+/*article {
 	margin-top:45px;
-}
+}*/
 
 img {
 	width: 160px;
@@ -207,3 +207,80 @@ img {
     50% { -moz-transform: scale(0.5) rotate(180deg);}
     100% { -moz-transform: scale(1) rotate(360deg);}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.pagination {
+  display: block;
+  min-height: 1.5rem;
+  margin-left: -0.3125rem; }
+.pagination span {
+height: 1.5rem;
+color: #222222;
+font-size: 0.875rem;
+margin-left: 0.3125rem; }
+.pagination span a, .pagination span button, .pagination span.page.current {
+  display: block;
+  padding: 0.0625rem 0.625rem 0.0625rem;
+  color: #999999;
+  background: none;
+  border-radius: 3px;
+  font-weight: normal;
+  font-size: 1em;
+  line-height: inherit;
+  transition: background-color 300ms ease-out; }
+.pagination span:hover a,
+.pagination span a:focus, .pagination span:hover button,
+.pagination span button:focus {
+  background: #e6e6e6; }
+.pagination span.unavailable a, .pagination span.unavailable button {
+  cursor: default;
+  color: #999999; }
+.pagination span.unavailable:hover a, .pagination span.unavailable a:focus, .pagination span.unavailable:hover button, .pagination span.unavailable button:focus {
+  background: transparent; }
+.pagination span.page.current , .pagination span.page.current button {
+  background: #008cba;
+  color: white;
+  font-weight: bold;
+  cursor: default; }
+.pagination span.page.current :hover, .pagination span.page.current :focus, .pagination span.page.current button:hover, .pagination span.page.current button:focus {
+    background: #008cba; }
+.pagination span {
+    float: left;
+    display: block; }
