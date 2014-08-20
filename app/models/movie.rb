@@ -4,6 +4,7 @@ class Movie < ActiveRecord::Base
 	has_and_belongs_to_many :categories
 
 	validates :poster, presence: {message: "Error, there isn't any poster"}
+	validates :trailer_url, presence: {message: "Error, there isn't any trailer url"}
 	validates :title, uniqueness: {message: "Error, there is a movie with this title"}
 
 	scope :search, ->(title) {

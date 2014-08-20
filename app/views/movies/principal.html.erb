@@ -7,6 +7,28 @@ article {
 	background-image: url('http://collectionofpicture.com/wp-content/uploads/2013/11/electro-music-wallpaper-116.jpg');
 	background-size: 1300px 800px;
 }
+
+#text {
+position: absolute;
+width: 600px;
+height: 120px;
+left: 50%;
+top: 50%;
+margin-left: -300px;
+margin-top: -60px;
+text-align: center;
+text-transform: uppercase;
+-webkit-tranform: translateZ(0);
+-webkit-transition-duration: 0.05s;
+-moz-tranform: translateZ(0);
+text-shadow:0px 0px 0 rgb(-17,-8,238),0px -1px 0 rgb(-23,-14,232),0px -2px 0 rgb(-30,-21,225),0px -3px 0 rgb(-37,-28,218),0px -4px 0 rgb(-43,-34,212),0px -5px 0 rgb(-50,-41,205),0px -6px 0 rgb(-57,-48,198),0px -7px 0 rgb(-64,-55,191),0px -8px 0 rgb(-70,-61,185),0px -9px 0 rgb(-77,-68,178),0px -10px 0 rgb(-84,-75,171),0px -11px 0 rgb(-90,-81,165),0px -12px 0 rgb(-97,-88,158), 0px -13px 0 rgb(-104,-95,151),0px -14px 13px rgba(0,0,0,0.6),0px -14px 1px rgba(0,0,0,0.5),0px 0px 13px rgba(0,0,0,.2);
+}
+
+#text h1, h2{
+	color: red;
+	font-size: 90px;
+}
+
 </style>
 <ul>
 	<p></p><li><a href="/movies">Movie list</a></li><p></p>
@@ -14,3 +36,44 @@ article {
 	<p></p><li><a href="/categories">Categories list</a></li><p></p>
 	<p></p><li><a href="/music">Portada music</a></li><p></p>
 </ul>
+
+
+<div id="text">
+	<h1>What Can</h1>
+	<h2>I DO?!</h2>
+</div>
+
+<script type="text/javascript">
+var text = document.getElementById('text'),
+	body = document.body,
+	steps = 7;
+function threedee (e) {
+	var x = Math.round(steps / (window.innerWidth / 2) * (window.innerWidth / 2 - e.clientX)),
+		y = Math.round(steps / (window.innerHeight / 2) * (window.innerHeight / 2 - e.clientY)),
+		shadow = '',
+		color1 = 44,
+		color2 = 144,
+		color3 = 238,
+		radius = 3,
+		i;
+	
+	for (i=0; i<steps; i++) {
+		tx = Math.round(x / steps * i);
+		ty = Math.round(y / steps * i);
+		if (tx || ty) {
+			color1 -= 3 * i;
+			color2 -= 3 * i;
+			color3 -= 3 * i;
+			shadow += tx + 'px ' + ty + 'px 0 rgb(' + color1 + ', ' + color2 + ', ' + color3 + '), ';
+		}
+	}
+
+	shadow += x + 'px ' + y + 'px 1px rgba(0,0,0,.2), ' + x*2 + 'px ' + y*2 + 'px 6px rgba(0,0,0,.3)';
+	
+	text.style.textShadow = shadow;
+	text.style.webkitTransform = 'translateZ(0) rotateX(' + y*1.5 + 'deg) rotateY(' + -x*1.5 + 'deg)';
+	text.style.MozTransform = 'translateZ(0) rotateX(' + y*1.5 + 'deg) rotateY(' + -x*1.5 + 'deg)';
+}
+
+document.addEventListener('mousemove', threedee, false);
+</script>
