@@ -5,14 +5,32 @@
 <%= submit_tag('Search') %>
 <% end %>
 
+<div class="moverboton">
+<a href="/movies/random_movies?" class="rotate">
+	<span></span>
+    <span></span>
+    <span>Random<br><br>movie!</span>
+</a>
+</div>
+
+
+<div class="category_form">
 <form accept-charset="UTF-8" action="/movies/search_category" method="get"><div style="display:none"><input name="utf8" type="hidden" value="✓"></div>
-
+<div class="all_categories">
 <%  Category.all.each do |category| %>
-    <%= check_box_tag 'category[]', category.name %> <%= category.name %> <br/>
+    <%= check_box_tag 'category[]', category.name %> <%= category.name %> 
 <% end %>
+</div>
 
+<div class="submit_category_search">
 <input name="commit" type="submit" value="Search">
+</div>
 </form>
+</div>
+
+
+
+
 
 <ul>	<% @movies.each do |a| %>
 	<li>
@@ -30,13 +48,5 @@
 	<%end%>
 </ul>
 
+
 <p><%= paginate @movies %></p>
-
-
-
-
-<a href="/movies/random_movies?" class="rotate">
-	<span></span>
-    <span></span>
-    <span>Random<br><br>movie!</span>
-</a>
