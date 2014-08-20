@@ -294,6 +294,8 @@ footer {
     transform: scale(0);
 }
 .rotate_song:hover span:nth-child(2){
+    background:transparent url('http://fc06.deviantart.net/fs70/f/2010/339/2/3/acb_ezio_spin_by_murcuseo-d349lty.gif') no-repeat center center;
+    background-size:110px;
     -webkit-animation:rotate 1s linear;
     -moz-animation:rotate 1s linear;
     animation:rotate 1s linear;
