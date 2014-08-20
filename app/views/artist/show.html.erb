@@ -10,11 +10,11 @@
 
 <% if @artist.songs.length > 1 %>
 	<p>Songs: <% @artist.songs[0..@artist.songs.length - 2].each do |song| %>
-		<%= link_to(song.title, song_path(song)) %>, 
+		<%= link_to(song.title, song_path(song.id)) %>, 
 	<% end %>
-	<%= link_to(@artist.songs.last.title, song_path(@artist.songs.last.title)) %>.
+	<%= link_to(@artist.songs.last.title, song_path(@artist.songs.last.id)) %>.
 	</p>
 <% else %>
-	<p>Song: <%= link_to(@artist.songs.last.title, song_path(@artist.songs.last.title))%>. </p>
+	<p>Song: <%= link_to(@artist.songs.last.title, song_path(@artist.songs.last.id))%>. </p>
 <% end %>
 </div>

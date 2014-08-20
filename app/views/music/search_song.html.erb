@@ -12,7 +12,7 @@
 
 
 
-<% @page = Nokogiri::HTML(open(song.video_url)) %>
+<% @page = Nokogiri::HTML(open(@song.video_url)) %>
 <% @noko = @page.css('div[class="wrapper"]').to_s.html_safe %>
 <%= @noko %>
 </div>
