@@ -1,50 +1,11 @@
 <h1>Index</h1>
 <p>lista de canciones</p>
-<%= @al['get_buy_links'] %>
-<br>
-<img src="<%= @al['image'][3]['#text'] %>"/>
-<br>
-<!-- 
-<%= form_tag(search_category_music_index_path, method: :get) do %>
-<%= text_field_tag('category') %>
-<%= submit_tag('Search category') %>
-<% end %> -->
 
 <%= form_tag(search_song_music_index_path, method: :get) do %>
 <%= text_field_tag('title') %>
 <%= submit_tag('Search song') %>
 <% end %>
-<!-- 
-You can choose between:
-<ul>
-<li>acoustic</li>
-<li>ambient</li>
-<li>blues</li>
-<li>classical</li>
-<li>country</li>
-<li>electronic</li>
-<li>emo</li>
-<li>folk</li>
-<li>hardcore</li>
-<li>hip hop</li>
-<li>indie</li>
-<li>jazz</li>
-<li>latin</li>
-<li>metal</li>
-<li>pop</li>
-<li>pop punk</li>
-<li>punk</li>
-<li>reggae</li>
-<li>rnb</li>
-<li>rock</li>
-<li>soul</li>
-<li>world</li>
-<li>60s</li>
-<li>70s</li>
-<li>80s</li>
-<li>90s</li>
-</ul>
- -->
+
 <form accept-charset="UTF-8" action="/music/search_category" method="get"><div style="display:none"><input name="utf8" type="hidden" value="✓"></div>
 
 <%  Tag.all.each do |tag| %>
@@ -60,3 +21,17 @@ You can choose between:
     <span></span>
     <span>Random<br><br>song!</span>
 </a>
+
+
+<% @songs.each do |song| %>
+	<h4>Title: <%= song.title %></h4>
+	<p>Artist: <%= link_to(song.artist.name, artist_path(song.artist)) %></p>
+	<p>Categories: <% song.artist.tags[0..song.artist.tags.length - 2].each do |tag| %>
+		<%= tag.name %>, 
+	<% end %>
+	<%= song.artist.tags.last.name %>.
+	</p>
+	<p>Number of listeners: <%= song.listeners %></p>
+
+<% end %>
+<p><%= paginate @songs %></p>

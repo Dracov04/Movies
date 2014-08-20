@@ -85,6 +85,10 @@ class MoviesController < ApplicationController
  		@movie = Movie.find_by_id(rand(Movie.count))
  	end
 
+ 	def principal
+ 		
+ 	end
+
  	private
  	def set_movie
  		@movie = Movie.find params[:id]

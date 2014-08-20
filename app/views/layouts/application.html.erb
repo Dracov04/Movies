@@ -29,14 +29,23 @@
         					<li class="divider"></li>
         					<li><%= link_to("Actors list", cast_members_path) %></li>
         					<li class="divider"></li>
-        					<li><%= link_to("Category list", categories_path) %></li>        			
+        					<li><%= link_to("Categories list", categories_path) %></li>        			
 		        		</ul>
 		    		</li>
 		    	</ul>
-		    	<ul class="left show-for-small-up">
-		    		<li class="divider"></li>
-		    		<li><%= link_to("Music", music_index_path) %></li>
-		    		<li class="divider"></li>
+		    	<ul class="left">
+	    			<li class="divider"></li>
+		    		<li class="has-dropdown not-click">
+		    			<a>Music</a>
+		        		<ul class="dropdown">
+		        			<li class="divider"></li>		        				
+        					<li><%= link_to("Tracks list", music_index_path) %></li>
+        					<li class="divider"></li>
+        					<li><%= link_to("Artists list", artist_index_path) %></li>
+        					<li class="divider"></li>
+        					<li><%= link_to("Tags list", tags_path) %></li>        			
+		        		</ul>
+		    		</li>
 		    	</ul>
 		    </div>
 

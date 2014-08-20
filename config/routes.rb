@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # get '/movies/:id' => 'movie#show'
   get '/actor/:full_name' => 'cast_members#show_by_name', as: 'name'
   #get '/' => 'movies#principal'
-  root 'movies#index'
+  root 'movies#principal'
   # get '/actor' => 'cast_member#index'
   
 

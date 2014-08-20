@@ -5,8 +5,7 @@ class MusicController < ApplicationController
 	require 'open-uri'
 
 	def index
-		@album = LastFM::Album.get_info(:artist => "Red Hot Chili Peppers", :album => "Mother's Milk")
-		@al = @album['album']
+		@songs = Song.all.page params[:page]
 	end
 
 	def search_song
