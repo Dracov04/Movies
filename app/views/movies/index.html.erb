@@ -1,9 +1,6 @@
-<h1>INDEX</h1>
+<section class="movies_header">
 
-<%= form_tag(search_movies_path, method: :get) do %>
-<%= text_field_tag('title') %>
-<%= submit_tag('Search') %>
-<% end %>
+<h1>Movies</h1>
 
 <div class="moverboton">
 <a href="/movies/random_movies?" class="rotate">
@@ -13,40 +10,47 @@
 </a>
 </div>
 
+<%= form_tag(search_movies_path, method: :get) do %>
+<%= text_field_tag'title',nil, placeholder: 'Search movie by title...' %>
+<%= submit_tag'Search', class: 'submit_search' %>
+<% end %>
+
+
 
 <div class="category_form">
-<form accept-charset="UTF-8" action="/movies/search_category" method="get"><div style="display:none"><input name="utf8" type="hidden" value="✓"></div>
-<div class="all_categories">
-<%  Category.all.each do |category| %>
-    <%= check_box_tag 'category[]', category.name %> <%= category.name %> 
-<% end %>
+	<form accept-charset="UTF-8" action="/movies/search_category" method="get"><div style="display:none"><input name="utf8" type="hidden" value="✓"></div>
+		<div >
+		<%  Category.all.each do |category| %>
+		   <div class="each_category"> <%= check_box_tag 'category[]', category.name %> <%= category.name %> </div>
+		<% end %>
+		</div>
+
+		<div class="submit_category_search">
+		<input name="commit" type="submit" value="Search">
+		</div>
+	</form>
 </div>
 
-<div class="submit_category_search">
-<input name="commit" type="submit" value="Search">
-</div>
-</form>
-</div>
+</section>
 
 
-
-
-
-<ul>	<% @movies.each do |a| %>
-	<li>
-		<%= link_to(a.title, movie_path(a.id)) %> -ID: <%= a.id %> -View: <%= a.counter %>
-		<p><%= link_to("View +1", increment_counter_movie_path(a), method: :patch) %></p>
-		<p><%= link_to("View -1", reduce_counter_movie_path(a), method: :patch) %></p>
-		<%if a.poster? %>
+<section class='movie_list'>
+	<ul><% @movies.each do |a| %>
+		<div class='movie_preview'>
+		<li>
+			<%= link_to(a.title, movie_path(a.id)) %> <br> -ID: <%= a.id %> -View: <%= a.counter %>
+			<p><%= link_to("View +1", increment_counter_movie_path(a), method: :patch) %></p>
+			<p><%= link_to("View -1", reduce_counter_movie_path(a), method: :patch) %></p>
 			<br><%= link_to(image_tag(a.poster), movie_path(a)) %></br>
-		<%else%>
-		<br><img src="http://www.alpharoto.com/images/image_not_found.jpg"/></br>
+
+		</li>
+
+		<p><%= link_to("Edit", edit_movie_path(a)) %></p>
+		<p><%= link_to("Delete",  movie_path(a), method: :delete, data:{confirm: "Are you sure?"}) %></p>
+		
+		</div>
 		<%end%>
-	</li>
-	<p><%= link_to("Edit", edit_movie_path(a)) %></p>
-	<p><%= link_to("Delete",  movie_path(a), method: :delete, data:{confirm: "Are you sure?"}) %></p>
-	<%end%>
-</ul>
+	</ul>
+</section>
 
-
-<p><%= paginate @movies %></p>
+<div class='pagination_section'><p ><%= paginate @movies %></p></div>

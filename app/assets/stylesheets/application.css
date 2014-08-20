@@ -2,8 +2,7 @@
 
 /*reset css*/
 html, body, div, span, applet, object, iframe,
-p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
+p, blockquote, pre, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
@@ -52,14 +51,14 @@ body{
 
 }
 img {
-	width: 160px;
-	height: 240px; 
+    width: 240px;
+    height: 320px; 
 }
 article{
     margin: auto;
     width: 95%;
     background-color: rgb(255, 255, 255);
-    padding: 5px 30px 30px 30px;
+    padding-bottom: 30px;
     min-height: 100%;    
 }
 footer {
@@ -68,31 +67,71 @@ footer {
     bottom: 0;
     height: auto;
     padding: 5px;
-
 }
 .footer_text{
     font-size: 24px;
     font-weight: bold;
     height: 30px;
 }
+/*###########################################MOVIEHEADER##########################*/
 .moverboton{
     float: right;
 }
 .category_form{
-    max-width: 500px;0
+    max-width: 930px;
+    border: 1px solid #cccccc;
+    padding: 10px 10px 30px 10px;
+}
+.each_category{
+    margin-left: 20px;
+    display: inline-block;
+    width: 90px;
 }
 .submit_category_search{
     display: block;
+    margin-left: 20px; 
+    float: right;
 }
+
+#title{
+    width: 300px;
+    display: inline-block;
+}
+.movies_header{
+    position: relative;
+    padding: 10px 30px 30px 30px;
+    background-color: rgb(232, 240, 248);;
+    width: 100%;
+    min-height: 275px;
+}
+
+
+/*############################################MOVIE_LIST#########################*/
+.movie_list{
+    margin: auto;
+    max-width: 1100px;
+    padding: 20px;
+}
+.movie_preview{
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 40px;
+    max-width: 200px;
+}
+.pagination_section{
+    margin-top: 25px;
+    margin-left: 40%;
+}
+/*###############################################################################*/
 #menu {
-	width:200px;
-	height:165px;
-	background-color: #00eeff;
-	right: 1em;
-	position:fixed;
-	text-align: center;
-	border-radius: 70px;
-	padding: 0;
+    width:200px;
+    height:165px;
+    background-color: #00eeff;
+    right: 1em;
+    position:fixed;
+    text-align: center;
+    border-radius: 70px;
+    padding: 0;
 }
 
 .rotate{

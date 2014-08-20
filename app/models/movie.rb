@@ -19,5 +19,5 @@ class Movie < ActiveRecord::Base
 	movie
 	end
 
-	paginates_per 10
+	paginates_per 12
 end

@@ -60,7 +60,7 @@ class MoviesController < ApplicationController
 		 	@imdb = search.movies[0..10]
 
 		 	@movies = @imdb.inject(Array.new) do |all_movies, imdb|
-		 		movie = Movie.find_or_create_by(title: imdb.title, plot: imdb.plot, poster: imdb.poster, year: imdb.year)
+		 		movie = Movie.find_or_create_by(title: imdb.title, plot: imdb.plot, poster: imdb.poster, year: imdb.year, trailer_url: imdb.trailer_url)
 		 		imdb.genres.each do |genre|
 		 			category = Category.find_or_create_by name: genre
 		 			movie.categories << category
