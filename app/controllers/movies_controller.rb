@@ -51,26 +51,25 @@ class MoviesController < ApplicationController
 	end
 
 	def search
-		@movies = Movie.search(params[:title]).page params[:page]
-	# 	search = Imdb::Search.new params[:qwery]
-	# 	@imdb = search.movies[0..10]
+		# @movies = Movie.search(params[:title]).page params[:page]
+	 	# search = Imdb::Search.new params[:title]
+	 	# @imdb = search.movies[0..10]
 
-	# 	@movies = @imdb.collect do |imdb|
-	# 		movie = Movie.find_or_create_by(title: imdb.title, plot: imdb.plot, poster: imdb.poster, year: imdb.year)
-	# 		imdb.genres.each do |genre|
-	# 			category = Category.find_or_create_by name: genre
-	# 			movie.categories << category
-	# 		end
+	 	# movies = @imdb.collect do |imdb|
+	 	# 	movie = Movie.find_or_create_by(title: imdb.title, plot: imdb.plot, poster: imdb.poster, year: imdb.year)
+	 	# 	imdb.genres.each do |genre|
+	 	# 		category = Category.find_or_create_by name: genre
+	 	# 		movie.categories << category
+	 	# 	end
 
-	# 		 imdb.cast_members.each do |imdb_member|	
-	# 		 	my_member = CastMember.find_or_create_by full_name: imdb_member
- # 		 		movie.cast_members << my_member
-	# 		 end
-	# 		movie
-	# 	end
-	# 	#.collect{|mo| [mo.title, mo.plot, mo.poster, mo.year, mo.cast_members]}
-	# 	render 'index'
-	 end
+	 	# 	 imdb.cast_members.each do |imdb_member|	
+	 	# 	 	my_member = CastMember.find_or_create_by full_name: imdb_member
+  	# 	 		movie.cast_members << my_member
+	 	# 	 end
+	 	# 	movie
+	 	# end
+	 	@movies = Movie.search(params[:title]).page params[:page]
+	end
 
 	def search_category
 		@categories = Category.where(name: params[:category]).page(params[:page])
