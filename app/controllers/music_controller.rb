@@ -15,13 +15,13 @@ class MusicController < ApplicationController
 
 			@lastFM = @lastFM_search['results']['trackmatches']['track']
 
-			@songs = @lastFM.map do |track|
+			@songs = @lastFM.inject(Array.new) do |all_songs, track|
 				song = Song.find_or_create_by(title: track['name'], listeners: track['listeners'], video_url: track['url'])
 
 				@lastFM_search_artist = LastFM::Artist.get_info(:artist => track['artist'])
 
 				artist = Artist.find_or_create_by(name: track['artist'], info: @lastFM_search_artist['artist']['bio']['summary'])
-				song.artist = artist
+				song.artist = artist if artist.save
 
 				if @lastFM_search_artist['artist']['tags']['tag']
 			 		@lastFM_search_artist['artist']['tags']['tag'].each do |tag|
@@ -33,8 +33,8 @@ class MusicController < ApplicationController
 			 			end
 			 		end
 		 		end
-		 		song.save
-		 		song
+		 		all_songs << song if song.save
+		 		all_songs
 	 		end
 		end
 	end
