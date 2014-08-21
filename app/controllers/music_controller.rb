@@ -1,8 +1,4 @@
 class MusicController < ApplicationController
-	
-	require 'rubygems'
-	require 'nokogiri'
-	require 'open-uri'
 
 	def index
 		@songs = Song.all.page params[:page]
@@ -12,6 +8,7 @@ class MusicController < ApplicationController
 		@songs = Song.where(["lower(title) LIKE (?)",'%' + params[:title].downcase + '%'])
 		@songs.page params[:page]
 		if !@songs.empty?
+			@songs
 		else
 
 			@lastFM_search = LastFM::Track.search(:track => params[:title])
@@ -24,7 +21,6 @@ class MusicController < ApplicationController
 				@lastFM_search_artist = LastFM::Artist.get_info(:artist => track['artist'])
 
 				artist = Artist.find_or_create_by(name: track['artist'], info: @lastFM_search_artist['artist']['bio']['summary'])
-
 				song.artist = artist
 
 				if @lastFM_search_artist['artist']['tags']['tag']
