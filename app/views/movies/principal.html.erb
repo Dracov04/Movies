@@ -45,7 +45,7 @@ text-shadow:0px 0px 0 rgba(0, 43, 121, 1),0px -1px 0 rgba(0, 43, 121, 1),0px -2p
 <script type="text/javascript">
 var text = document.getElementById('text'),
 	body = document.body,
-	steps = 20;
+	steps = 11;
 function threedee (e) {
 	var x = Math.round(steps / (window.innerWidth / 2) * (window.innerWidth / 2 - e.clientX)),
 		y = Math.round(steps / (window.innerHeight / 2) * (window.innerHeight / 2 - e.clientY)),
@@ -53,7 +53,7 @@ function threedee (e) {
 		color1 = 0,
 		color2 = 214,
 		color3 = 220,
-		radius = 3,
+		radius = 5,
 		i;
 	
 	for (i=0; i<steps; i++) {
