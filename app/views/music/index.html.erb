@@ -35,7 +35,7 @@
 	<ul><% @songs.each do |song| %>
 		<div class='movie_preview'>
 			<li>
-				<h4>Title: <%= song.title %></h4>
+				<h4><%= link_to(song.title, song_path(song)) %></h4>
 				<p>Artist: <%= link_to(song.artist.name, artist_path(song.artist)) %></p>
 				<p>Categories: <% song.artist.tags[0..song.artist.tags.length - 2].each do |tag| %>
 					<%= tag.name %>, 

@@ -1,5 +1,9 @@
-<h1>PRINCIPAL PAGE</h1>
 <style>
+@font-face {
+    font-family: "Principal";
+    src: url(assets/principal.ttf) format("truetype");
+}
+
 body {
 	background-color: black;
 }
@@ -10,10 +14,10 @@ article {
 
 #text {
 position: absolute;
-width: 600px;
-height: 120px;
-left: 50%;
-top: 50%;
+width: 1000px;
+height: 200px;
+left: 35%;
+top: 35%;
 margin-left: -300px;
 margin-top: -60px;
 text-align: center;
@@ -21,21 +25,16 @@ text-transform: uppercase;
 -webkit-tranform: translateZ(0);
 -webkit-transition-duration: 0.05s;
 -moz-tranform: translateZ(0);
-text-shadow:0px 0px 0 rgb(-17,-8,238),0px -1px 0 rgb(-23,-14,232),0px -2px 0 rgb(-30,-21,225),0px -3px 0 rgb(-37,-28,218),0px -4px 0 rgb(-43,-34,212),0px -5px 0 rgb(-50,-41,205),0px -6px 0 rgb(-57,-48,198),0px -7px 0 rgb(-64,-55,191),0px -8px 0 rgb(-70,-61,185),0px -9px 0 rgb(-77,-68,178),0px -10px 0 rgb(-84,-75,171),0px -11px 0 rgb(-90,-81,165),0px -12px 0 rgb(-97,-88,158), 0px -13px 0 rgb(-104,-95,151),0px -14px 13px rgba(0,0,0,0.6),0px -14px 1px rgba(0,0,0,0.5),0px 0px 13px rgba(0,0,0,.2);
+text-shadow:0px 0px 0 rgba(0, 43, 121, 1),0px -1px 0 rgba(0, 43, 121, 1),0px -2px 0 rgb(-30,-21,225),0px -3px 0 rgbrgba(0, 43, 121, 1),0px -4px 0 rgb(-43,-34,212),0px -5px 0 rgb(-50,-41,205),0px -6px 0 rgb(-57,-48,198),0px -7px 0 rgb(-64,-55,191),0px -8px 0 rgbrgba(0, 43, 121, 1),0px -9px 0 rgb(-77,-68,178),0px -10px 0 rgb(-84,-75,171),0px -11px 0 rgb(-90,-81,165),0px -12px 0 rgb(-97,-88,158), 0px -13px 0 rgba(0, 43, 121, 1),0px -14px 13px rgba(0,0,0,0.6),0px -14px 1px rgba(0,0,0,0.5),0px 0px 13px rgba(0,0,0,.2);
 }
 
 #text h1, h2{
-	color: red;
-	font-size: 90px;
+	color: rgba(0, 43, 121, 1);
+	font-size: 110px;
+	font-family: Principal;
 }
 
 </style>
-<ul>
-	<li><a href="/movies">Movie list</a></li>
-	<li><a href="/cast_members">Actors list</a></li>
-	<li><a href="/categories">Categories list</a></li>
-	<li><a href="/music">Portada music</a></li>
-</ul>
 
 
 <div id="text">
@@ -46,14 +45,14 @@ text-shadow:0px 0px 0 rgb(-17,-8,238),0px -1px 0 rgb(-23,-14,232),0px -2px 0 rgb
 <script type="text/javascript">
 var text = document.getElementById('text'),
 	body = document.body,
-	steps = 17;
+	steps = 20;
 function threedee (e) {
 	var x = Math.round(steps / (window.innerWidth / 2) * (window.innerWidth / 2 - e.clientX)),
 		y = Math.round(steps / (window.innerHeight / 2) * (window.innerHeight / 2 - e.clientY)),
 		shadow = '',
-		color1 = 44,
-		color2 = 144,
-		color3 = 238,
+		color1 = 0,
+		color2 = 214,
+		color3 = 220,
 		radius = 3,
 		i;
 	

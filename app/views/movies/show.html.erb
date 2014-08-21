@@ -1,6 +1,5 @@
-<h1>Movie <%= @movie.id%></h1>
+<h1><%= @movie.title%></h1>
 <ul>
-<li><%= @movie.title%></li>
 <li>Watch the trailer: <a href="<%= @movie.trailer_url%>" target="_blank">here</a></li>
 <br><img src="<%= @movie.poster %>"/></br>
 <li><%= @movie.year%></li>

@@ -38,7 +38,7 @@
 	<ul><% @movies.each do |a| %>
 		<div class='movie_preview'>
 		<li>
-			<%= link_to(a.title, movie_path(a.id)) %> <br> -ID: <%= a.id %> -View: <%= a.counter %>
+			<h4><%= link_to(a.title, movie_path(a.id)) %></h4> <br> ID: <%= a.id %> -View: <%= a.counter %>
 			<p><%= link_to("View +1", increment_counter_movie_path(a), method: :patch) %></p>
 			<p><%= link_to("View -1", reduce_counter_movie_path(a), method: :patch) %></p>
 			<br><%= link_to(image_tag(a.poster), movie_path(a)) %></br>
