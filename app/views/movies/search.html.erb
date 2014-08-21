@@ -1,17 +1,21 @@
 <h1>SEARCH</h1>
 
-<ul>	<% @movies.each do |a| %>
-	<li>
-		<%= link_to(a.title, movie_path(a.id)) %> -ID: <%= a.id %> -Counter: <%= a.counter %>
-		<p><%= link_to("Increase Counter", increment_counter_movie_path(a.id), method: :patch) %></p>
-		<p><%= link_to("Reduce Counter", reduce_counter_movie_path(a.id), method: :patch) %></p>
-		<%if a.poster? %>
-			<br><%= link_to(image_tag(a.poster), movie_path(a)) %></br>
-		<%else%>
-		<br><img src="http://www.alpharoto.com/images/image_not_found.jpg"/></br>
+<% if @movies == [] %>
+	Sorry, there isn´t any movie with this title.
+<% else %>
+	<ul>	<% @movies.each do |a| %>
+		<li>
+			<%= link_to(a.title, movie_path(a.id)) %> -ID: <%= a.id %> -Counter: <%= a.counter %>
+			<p><%= link_to("Increase Counter", increment_counter_movie_path(a.id), method: :patch) %></p>
+			<p><%= link_to("Reduce Counter", reduce_counter_movie_path(a.id), method: :patch) %></p>
+			<%if a.poster? %>
+				<br><%= link_to(image_tag(a.poster), movie_path(a)) %></br>
+			<%else%>
+			<br><img src="http://www.alpharoto.com/images/image_not_found.jpg"/></br>
+			<%end%>
+		</li>
+		<p><%= link_to("Edit", edit_movie_path(a)) %></p>
+		<p><%= link_to("Delete",  movie_path(a), method: :delete, data:{confirm: "Are you sure?"}) %></p>
 		<%end%>
-	</li>
-	<p><%= link_to("Edit", edit_movie_path(a)) %></p>
-	<p><%= link_to("Delete",  movie_path(a), method: :delete, data:{confirm: "Are you sure?"}) %></p>
-	<%end%>
-</ul>
+	</ul>
+<% end %>

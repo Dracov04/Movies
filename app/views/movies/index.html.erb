@@ -35,22 +35,28 @@
 
 
 <section class='movie_list'>
-	<ul><% @movies.each do |a| %>
-		<div class='movie_preview'>
-		<li>
-			<h4><%= link_to(a.title, movie_path(a.id)) %></h4> <br> ID: <%= a.id %> -View: <%= a.counter %>
-			<p><%= link_to("View +1", increment_counter_movie_path(a), method: :patch) %></p>
-			<p><%= link_to("View -1", reduce_counter_movie_path(a), method: :patch) %></p>
-			<br><%= link_to(image_tag(a.poster), movie_path(a)) %></br>
+	<% if @movies == [] %>
+		There isn´t any movies in data base
+	<%else%>
+		<ul><% @movies.each do |movie| %>
+			<div class='movie_preview'>
+			<% if movie == nil %>
+				There isn´t any song
+			<% else %>
+				<li>
+					<h4><%= link_to(movie.title, movie_path(movie.id)) %></h4> <br> ID: <%= movie.id %> -View: <%= movie.counter %>
+					<p><%= link_to("View +1", increment_counter_movie_path(movie), method: :patch) %></p>
+					<p><%= link_to("View -1", reduce_counter_movie_path(movie), method: :patch) %></p>
+					<br><%= link_to(image_tag(movie.poster), movie_path(movie)) %></br>
 
-		</li>
+				</li>
 
-		<p><%= link_to("Edit", edit_movie_path(a)) %></p>
-		<p><%= link_to("Delete",  movie_path(a), method: :delete, data:{confirm: "Are you sure?"}) %></p>
-		
-		</div>
-		<%end%>
-	</ul>
+				<p><%= link_to("Edit", edit_movie_path(movie)) %></p>
+				<p><%= link_to("Delete",  movie_path(movie), method: :delete, data:{confirm: "Are you sure?"}) %></p>
+			<% end %>	
+			</div>
+		<%end%></ul>
+	<% end %>
 </section>
 
 <div class='pagination_section'><p><%= paginate @movies %></p></div>

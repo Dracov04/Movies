@@ -87,7 +87,7 @@ footer {
 .each_tag{
     margin-left: 20px;
     display: inline-block;
-    width: 130px;
+    width: 170px;
 }
 .submit_category_search{
     display: block;
@@ -121,7 +121,7 @@ footer {
 .each_category{
     margin-left: 20px;
     display: inline-block;
-    width: 90px;
+    width: 100px;
 }
 .submit_category_search{
     display: block;
