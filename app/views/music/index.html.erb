@@ -37,16 +37,20 @@
 	<% else %>
 		<ul><% @songs.each do |song| %>
 			<div class='movie_preview'>
-				<li>
-					<h4><%= link_to(song.title, song_path(song)) %></h4>
-					<p>Artist: <%= link_to(song.artist.name, artist_path(song.artist)) %></p>
-					<p>Categories: <% song.artist.tags[0..song.artist.tags.length - 2].each do |tag| %>
-						<%= tag.name %>, 
-					<% end %>
-					<%= song.artist.tags.last.name %>.
-					</p>
-					<p>Number of listeners: <%= song.listeners %></p>
-				</li>
+				<% if song == nil %>
+					There isn´t any song
+				<% else %>
+					<li>
+						<h4><%= link_to(song.title, song_path(song)) %></h4>
+						<p>Artist: <%= link_to(song.artist.name, artist_path(song.artist)) %></p>
+						<p>Categories: <% song.artist.tags[0..song.artist.tags.length - 2].each do |tag| %>
+							<%= tag.name %>, 
+						<% end %>
+						<%= song.artist.tags.last.name %>.
+						</p>
+						<p>Number of listeners: <%= song.listeners %></p>
+					</li>
+				<% end %>
 			</div>
 		<% end %></ul>
 	<% end %>
