@@ -11,16 +11,8 @@ class MusicController < ApplicationController
 	def search_song
 		@songs = Song.where(["lower(title) LIKE (?)",'%' + params[:title].downcase + '%'])
 
-		if @songs != []
-			@songs
+		if !@songs.empty?
 		else
-			# @songs = Song.where(["lower(title) LIKE (?)",'%' + params[:title].downcase + '%'])
-
-			# @song = @songs.first
-
-			# @page = Nokogiri::HTML(open(@song.video_url))
-			# @noko = @page.css('div[class="wrapper"]').to_s.html_safe
-
 
 			@lastFM_search = LastFM::Track.search(:track => params[:title])
 
@@ -49,10 +41,6 @@ class MusicController < ApplicationController
 		 		song
 	 		end
 		end
-		@song = @songs.first
-
-		@page = Nokogiri::HTML(open(@song.video_url))
-		@noko = @page.css('div[class="wrapper"]').to_s.html_safe
 	end
 
 	def search_category
