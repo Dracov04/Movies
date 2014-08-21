@@ -10,7 +10,7 @@ class MusicController < ApplicationController
 
 	def search_song
 		@songs = Song.where(["lower(title) LIKE (?)",'%' + params[:title].downcase + '%'])
-
+		@songs.page params[:page]
 		if !@songs.empty?
 		else
 
@@ -40,6 +40,7 @@ class MusicController < ApplicationController
 		 		song.save
 		 		song
 	 		end
+	 		@songs.page params[:page]
 		end
 	end
 

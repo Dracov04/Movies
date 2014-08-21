@@ -158,6 +158,40 @@ footer {
     margin-left: 40%;
 }
 /*###############################################################################*/
+/*###########################################SONGS SHOW##########################*/
+#video_song{
+    margin-left: 25%;
+    margin-right: 20%;
+}
+
+.song_show_items{
+    text-align: center;
+    font-size: 20px;
+}
+/*###########################################MOVIE SHOW##########################*/
+.movie_show_items{
+    text-align: center;
+    font-size: 20px;
+    display: block;
+}
+#plot{
+    text-align: center;
+    font-size: 20px;
+    width: 70%;
+    margin: auto;
+    display: block;
+}
+#synopsis{
+    color: rgba(0, 0, 87, 1);
+    font-size: 24px;
+    font-style: bold;
+}
+/*###########################################ACTOR LIST##########################*/
+#actors_list{
+    text-align: center;
+    font-size: 25px;
+}
+/*###############################################################################*/
 #menu {
     width:200px;
     height:165px;

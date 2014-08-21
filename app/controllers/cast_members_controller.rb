@@ -5,6 +5,6 @@ class CastMembersController < ApplicationController
 	end
 	
 	def index
-		@actors = CastMember.all
+		@actors = CastMember.order(full_name: :asc).page params[:page]
 	end
 end

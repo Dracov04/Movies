@@ -6,4 +6,5 @@ class Artist < ActiveRecord::Base
 	validates :info, presence: {message: "Error, there isn´t any info"}
 	validates :name, presence: {message: "Error, there isn´t any name"}
 	validates :name, uniqueness: {message: "Error, there is an artist with this name"}
+	paginates_per 20
 end

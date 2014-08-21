@@ -1,6 +1,9 @@
-<h1>Actors</h1>
-<ul>
-	<% @actors.each do |a|%>
-	<li><%= link_to(a.full_name, name_path(a.full_name)) %></li>
-	<% end %>
-</ul>
+<div id='actors_list'>
+	<h1>Actors</h1>
+	<ul>
+		<% @actors.each do |actor|%>
+		<li><%= link_to(actor.full_name, name_path(actor.full_name)) %></li><br>
+		<% end %>
+	</ul>
+	<div class='pagination_section'><p><%= paginate @actors %></p></div>
+</div>

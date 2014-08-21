@@ -1,13 +1,15 @@
-<h1>Song</h1>
 <div>
-<h3>Title: <%= @song.title %></h3>
+<div class='song_show_items'><h1><%= @song.title %></h1>
 <p>Artist: <%= link_to(@song.artist.name, artist_path(@song.artist)) %></p>
+<br>
 <p>Categories: <% @song.artist.tags[0..@song.artist.tags.length - 2].each do |tag| %>
-	<%= tag.name %>, 
+	<%= link_to(tag.name, tag_path(tag)) %>, 
 <% end %>
-<%= @song.artist.tags.last.name %>.
+<%= link_to(@song.artist.tags.last.name, tag_path(@song.artist.tags.last)) %>.
 </p>
+<br>
 <p>Number of listeners: <%= @song.listeners %></p>
-
-<%= @noko %>
+<br>
+</div>
+<div id='video_song'><%= @noko %></div>
 </div>

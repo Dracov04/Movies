@@ -1,6 +1,9 @@
-<h1>Artist</h1>
-<ul>
-	<% @artists.each do |artist|%>
-	<li><%= link_to(artist.name, artist_path(artist)) %></li>
-	<% end %>
-</ul>
+<div id='actors_list'>
+	<h1>Artist</h1>
+	<ul>
+		<% @artists.each do |artist|%>
+		<li><%= link_to(artist.name, artist_path(artist)) %></li>
+		<% end %>
+	</ul>
+	<div class='pagination_section'><p><%= paginate @artists %></p></div>
+</div>

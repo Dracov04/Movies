@@ -1,6 +1,6 @@
 class ArtistController < ApplicationController
 	def index
-		@artists = Artist.all
+		@artists = Artist.order(name: :asc).page params[:page]
 	end
 
 	def show
