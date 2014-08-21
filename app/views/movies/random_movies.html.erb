@@ -1,26 +1,31 @@
-<h1>Movie <%= @movie.id%></h1>
-<ul>
-<li><%= @movie.title%></li>
-<li>Watch the trailer: <a href="<%= @movie.trailer_url%>">here</a></li>
-<%if @movie.poster? %>
-			<br><img src="<%= @movie.poster %>"/></br>
-		<%else%>
-		<br><img src="http://www.alpharoto.com/images/image_not_found.jpg"/></br>
-		<%end%>
-<li><%= @movie.year%></li>
-<li><% @movie.categories[0..@movie.categories.length - 2].each do |category|%>
-	<%= category.name %>, 
-<%end%>
-	<%= @movie.categories.last.name %>.
-</li>
+<div class= 'movie_show_items'>
+	<h1><%= @movie.title%></h1>
 
-<p><li><%= @movie.plot%></li></p>
-<p><li><% @movie.cast_members[0..8].each do |a|%>
-	<%= a.full_name %>, 
-	<%end%>
-<%= @movie.cast_members[9].full_name %>.
-</li></p>
-<p><li>Add your Review here: <%= link_to("Add review", new_movie_review_path(@movie)) %></li></p>
-<p><li>See all the reviews here: <%= link_to("See reviews",  movie_reviews_path(@movie)) %></li></p>
-<p><li>Return to your favourite  movies here: <%= link_to("Return", movies_path(@movie)) %></li></p>
-</ul><!-- <%= @noko %> -->
+	<ul>
+		<li>Watch the trailer: <a href="<%= @movie.trailer_url%>" target="_blank">here</a></li>
+		<br>
+		<img src="<%= @movie.poster %>"/>
+		<br>
+		<li><%= @movie.year%></li>
+		<br>
+		<li><% @movie.categories[0..@movie.categories.length - 2].each do |category|%>
+			<%= link_to(category.name,  category_path(category)) %>, 
+		<%end%>
+			<%= link_to(@movie.categories.last.name,  category_path(@movie.categories.last)) %>.
+		</li>
+		<br>
+		<p id='synopsis'>Synopsis</p>
+		<div id="plot"><li><%= @movie.plot%></li></div>
+		<br>
+		<p id='synopsis'>Cast members</p>
+		<p><li><% @movie.cast_members[0..8].each do |a|%>
+			<%= a.full_name %>, 
+			<%end%>
+		<%= @movie.cast_members[9].full_name %>.
+		</li></p>
+		<br>
+		<p><li>Add your Review here: <%= link_to("Add review", new_movie_review_path(@movie)) %></li></p>
+		<br>
+		<p><li>See all the reviews here: <%= link_to("See reviews",  movie_reviews_path(@movie)) %></li></p>
+	</ul>
+</div>

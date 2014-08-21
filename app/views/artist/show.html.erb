@@ -1,20 +1,25 @@
-<h1>Artist</h1>
-<div>
-<h3>Name: <%= @artist.name %></h3>
-<p>Information: <%= @artist.info.to_s.html_safe %></p>
-<p>Categories: <% @artist.tags[0..@artist.tags.length - 2].each do |tag| %>
-	<%= tag.name %>, 
-<% end %>
-<%= @artist.tags.last.name %>.
-</p>
+<div class= 'movie_show_items'><h1><%= @artist.name %></h1>
+	<div>
+		<% @artist.tags[0..@artist.tags.length - 2].each do |tag| %>
+		<%= link_to(tag.name, tag_path(tag)) %>, 
+		<% end %>
+		<%= link_to(@artist.tags.last.name, tag_path(@artist.tags.last)) %>.
+		</p>
+		<br>
+		<p id='synopsis'>Information</p> 
+		<p><%= @artist.info.to_s.html_safe %></p>
+		<br>
 
-<% if @artist.songs.length > 1 %>
-	<p>Songs: <% @artist.songs[0..@artist.songs.length - 2].each do |song| %>
-		<%= link_to(song.title, song_path(song.id)) %>, 
-	<% end %>
-	<%= link_to(@artist.songs.last.title, song_path(@artist.songs.last.id)) %>.
-	</p>
-<% else %>
-	<p>Song: <%= link_to(@artist.songs.last.title, song_path(@artist.songs.last.id))%>. </p>
-<% end %>
+		<% if @artist.songs.length > 1 %>
+			<p id='synopsis'>Songs</p>
+			<p><% @artist.songs[0..@artist.songs.length - 2].each do |song| %>
+				<%= link_to(song.title, song_path(song.id)) %>, 
+			<% end %>
+			<%= link_to(@artist.songs.last.title, song_path(@artist.songs.last.id)) %>.
+			</p>
+		<% else %>
+			<p id='synopsis'>Song</p>
+			<p><%= link_to(@artist.songs.last.title, song_path(@artist.songs.last.id))%>. </p>
+		<% end %>
+	</div>
 </div>

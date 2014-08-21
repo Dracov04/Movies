@@ -1,21 +1,36 @@
-<h1>SEARCH</h1>
+<div class= 'movie_show_items'><h1>SEARCH</h1></div>
 
 <% if @movies == [] %>
 	Sorry, there isn´t any movie with this title.
 <% else %>
-	<ul>	<% @movies.each do |a| %>
-		<li>
-			<%= link_to(a.title, movie_path(a.id)) %> -ID: <%= a.id %> -Counter: <%= a.counter %>
-			<p><%= link_to("Increase Counter", increment_counter_movie_path(a.id), method: :patch) %></p>
-			<p><%= link_to("Reduce Counter", reduce_counter_movie_path(a.id), method: :patch) %></p>
-			<%if a.poster? %>
-				<br><%= link_to(image_tag(a.poster), movie_path(a)) %></br>
-			<%else%>
-			<br><img src="http://www.alpharoto.com/images/image_not_found.jpg"/></br>
-			<%end%>
-		</li>
-		<p><%= link_to("Edit", edit_movie_path(a)) %></p>
-		<p><%= link_to("Delete",  movie_path(a), method: :delete, data:{confirm: "Are you sure?"}) %></p>
+	<ul><% @movies.each do |movie| %>
+<div class= 'movie_show_items'>
+	<h1><%= movie.title%></h1>
+
+	<ul>
+		<li>Watch the trailer: <a href="<%= movie.trailer_url%>" target="_blank">here</a></li>
+		<br>
+		<img src="<%= movie.poster %>"/>
+		<br>
+		<li><%= movie.year%></li>
+		<br>
+		<li><% movie.categories[0..movie.categories.length - 2].each do |category|%>
+			<%= link_to(category.name,  category_path(category)) %>, 
 		<%end%>
-	</ul>
+			<%= link_to(movie.categories.last.name,  category_path(movie.categories.last)) %>.
+		</li>
+		<br>
+		<p id='synopsis'>Synopsis</p>
+		<div id="plot"><li><%= movie.plot%></li></div>
+		<br>
+		<p id='synopsis'>Cast members</p>
+		<p><li><% movie.cast_members[0..8].each do |a|%>
+			<%= a.full_name %>, 
+			<%end%>
+		<%= movie.cast_members[9].full_name %>.
+		</li></p>
+		<br>
+		<br>
+	<% end %></ul>
+</div>
 <% end %>

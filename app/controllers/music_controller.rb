@@ -40,7 +40,6 @@ class MusicController < ApplicationController
 		 		song.save
 		 		song
 	 		end
-	 		@songs.page params[:page]
 		end
 	end
 
