@@ -15,20 +15,30 @@
 <%= submit_tag'Search', class: 'submit_search' %>
 <% end %>
 
-<div class="category_form">
-	<form accept-charset="UTF-8" action="/music/search_category" method="get"><div style="display:none"><input name="utf8" type="hidden" value="✓"></div>
+<dl class="accordion" data-accordion="">
+  <dd class="accordion-navigation">
+    <a href="#panel1">Search by category</a>
+    <div id="panel1" class="content">
+      <dl class="tabs" data-tab="">
+      	<div class="category_form">
+			<form accept-charset="UTF-8" action="/music/search_category" method="get"><div style="display:none"><input name="utf8" type="hidden" value="✓"></div>
 
-		<div>
-			<%  Tag.all.each do |tag| %>
-			    <div class="each_tag"> <%= check_box_tag 'tag[]', tag.name %> <%= tag.name %> </div>
-			<% end %>
-		</div>
+				<div>
+					<%  Tag.all.each do |tag| %>
+					    <div class="each_tag"> <%= check_box_tag 'tag[]', tag.name %> <%= tag.name %> </div>
+					<% end %>
+				</div>
 
-		<div class="submit_category_search">
-			<input name="commit" type="submit" value="Search">
+				<div class="submit_category_search">
+					<input name="commit" type="submit" value="Search">
+				</div>
+			</form>
 		</div>
-	</form>
-</div>
+	</dl>
+	</div>
+  </dd>
+ </dl>
+
 </section>
 
 <section class='movie_list'>
@@ -58,57 +68,16 @@
 
 <div class='pagination_section'><p><%= paginate @songs %></p></div>
 
+<script src="assets/jquery.js"></script>
+<script src="assets/foundation.js"></script>
+<script src="assets/foundation.accordion.js"></script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="accordion" data-accordion="">
-  <dd class="accordion-navigation">
-    <a href="#panel1">Accordion 1</a>
-    <div id="panel1" class="content">
-      <dl class="tabs" data-tab="">
-        <dd class="active"><a href="#panel2-1">Tab 1</a></dd>
-        <dd class=""><a href="#panel2-2">Tab 2</a></dd>
-        <dd class=""><a href="#panel2-3">Tab 3</a></dd>
-        <dd class=""><a href="#panel2-4">Tab 4</a></dd>
-      </dl>
-      <div class="tabs-content">
-        <div class="content active" id="panel2-1">
-          <p>First panel content goes here...</p>
-        </div>
-        <div class="content" id="panel2-2">
-          <p>Second panel content goes here...</p>
-        </div>
-        <div class="content" id="panel2-3">
-          <p>Third panel content goes here...</p>
-        </div>
-        <div class="content" id="panel2-4">
-          <p>Fourth panel content goes here...</p>
-        </div>
-      </div>
-    </div>
-  </dd>
-  <dd class="accordion-navigation">
-    <a href="#panel2">Accordion 2</a>
-    <div id="panel2" class="content">
-      Panel 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    </div>
-  </dd>
-  <dd class="accordion-navigation">
-    <a href="#panel3">Accordion 3</a>
-    <div id="panel3" class="content">
-      Panel 3. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    </div>
-  </dd>
-</dl>
+<script>
+  $(document).foundation({
+    accordion: {
+      callback : function (accordion) {
+        console.log(accordion);
+      }
+    }
+  });
+</script>

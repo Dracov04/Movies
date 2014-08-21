@@ -3054,7 +3054,9 @@ ul.pagination {
       text-transform: uppercase; }
 
 .accordion {
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  width: 80%;
+   }
   .accordion:before, .accordion:after {
     content: " ";
     display: table; }

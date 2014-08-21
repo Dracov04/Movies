@@ -101,7 +101,7 @@ footer {
 }
 .tracks_header{
     position: relative;
-    padding: 10px 30px 30px 30px;
+    padding: 45px 30px 30px 30px;
     background-color: rgba(209, 250, 206, 0.89);
     width: 100%;
     min-height: 275px;
@@ -135,7 +135,7 @@ footer {
 }
 .movies_header{
     position: relative;
-    padding: 10px 30px 30px 30px;
+    padding: 45px 30px 30px 30px;
     background-color: rgb(232, 240, 248);;
     width: 100%;
     min-height: 275px;
@@ -254,7 +254,7 @@ footer {
     opacity:0;
 }
 .rotate span:nth-child(2){
-    background:transparent url('http://fc03.deviantart.net/fs71/f/2012/040/2/3/batman_logo_3d_animation_by_syndikata_np-d4p71l4.gif') no-repeat center center;
+    background:transparent url(batman.gif) no-repeat center center;
     opacity:1;
     background-size:150px;
 }
@@ -343,7 +343,7 @@ footer {
     opacity:0;
 }
 .rotate_song span:nth-child(2){
-    background:transparent url('http://static.tumblr.com/2dea32491f7c0155e2da4b10c9283487/1rbjzdn/cbZn7evtg/tumblr_static_5afzy9gguvgookosok8wc4goo.gif') no-repeat center center;
+    background:transparent url(assasins_logo.gif) no-repeat center center;
     opacity:1;
     background-size:117px;
 }
@@ -363,7 +363,7 @@ footer {
     transform: scale(0);
 }
 .rotate_song:hover span:nth-child(2){
-    background:transparent url('http://fc06.deviantart.net/fs70/f/2010/339/2/3/acb_ezio_spin_by_murcuseo-d349lty.gif') no-repeat center center;
+    background:transparent url(ezio.gif) no-repeat center center;
     background-size:110px;
     -webkit-animation:rotate 1s linear;
     -moz-animation:rotate 1s linear;

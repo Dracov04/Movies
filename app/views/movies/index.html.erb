@@ -15,21 +15,28 @@
 <%= submit_tag'Search', class: 'submit_search' %>
 <% end %>
 
+<dl class="accordion" data-accordion="">
+  <dd class="accordion-navigation">
+    <a href="#panel1">Search by category</a>
+    <div id="panel1" class="content">
+        <dl class="tabs" data-tab="">
+	      	<div class="category_form">
+				<form accept-charset="UTF-8" action="/movies/search_category" method="get"><div style="display:none"><input name="utf8" type="hidden" value="✓"></div>
+					<div>
+						<%  Category.all.each do |category| %>
+				   			<div class="each_category"> <%= check_box_tag 'category[]', category.name %> <%= category.name %> </div>
+						<% end %>
+					</div>
 
-
-<div class="category_form">
-	<form accept-charset="UTF-8" action="/movies/search_category" method="get"><div style="display:none"><input name="utf8" type="hidden" value="✓"></div>
-		<div>
-		<%  Category.all.each do |category| %>
-		   <div class="each_category"> <%= check_box_tag 'category[]', category.name %> <%= category.name %> </div>
-		<% end %>
-		</div>
-
-		<div class="submit_category_search">
-		<input name="commit" type="submit" value="Search">
-		</div>
-	</form>
-</div>
+					<div class="submit_category_search">
+						<input name="commit" type="submit" value="Search">
+					</div>
+				</form>
+			</div>
+	  	</dl>
+	  	</div>
+	</dd>
+</dl>
 
 </section>
 
@@ -60,3 +67,17 @@
 </section>
 
 <div class='pagination_section'><p><%= paginate @movies %></p></div>
+
+<script src="assets/jquery.js"></script>
+<script src="assets/foundation.js"></script>
+<script src="assets/foundation.accordion.js"></script>
+
+<script>
+  $(document).foundation({
+    accordion: {
+      callback : function (accordion) {
+        console.log(accordion);
+      }
+    }
+  });
+</script>
