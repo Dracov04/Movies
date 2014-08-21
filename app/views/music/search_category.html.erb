@@ -1,11 +1,14 @@
-<h1>Category</h1>
-
-<ul>
-	<% @tags.each do |a| %>
-		<% a.artists.each do |artist| %>
-			<li>
-				<%= link_to(artist.name, artist_path(artist)) %>
-			</li>
-		<%end%>
-	<% end %>
-</ul>
+<div class='song_show_items'>
+	<ul>
+		<% @tags.each do |tag| %>
+			<h1><%= tag.name %></h1>
+		<% end %>
+		<% @tags.each do |tag| %>
+			<% tag.artists.each do |artist| %>
+				<li>
+					<%= link_to(artist.name, artist_path(artist)) %>
+				</li><br>
+			<%end%>
+		<% end %>
+	</ul>
+</div>

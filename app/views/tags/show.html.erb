@@ -1,5 +1,9 @@
-<h1><%= @tag.name %></h1>
-<p><% @tag.artists.order(name: :asc).each do |artist| %>
-	<li><%= link_to(artist.name, artist_path(artist)) %></li>
-<% end %>
-</p>
+<div id='actors_list'>
+	<ul>
+		<h1><%= @tag.name %></h1>
+		<p><% @tag.artists.order(name: :asc).each do |artist| %>
+			<li><%= link_to(artist.name, artist_path(artist)) %></li><br>
+		<% end %>
+		</p>
+	</ul>
+</div>

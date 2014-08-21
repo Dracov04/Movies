@@ -1,10 +1,14 @@
-<h1>SEARCH</h1>
-
-<ul><% @categories.each do |m| %>
-		<% m.movies.each do |a| %>
-			<li>
-				<%= link_to(a.title, movie_path(a)) %>
-			</li>
-		<%end%>
-	<% end %>
-</ul>
+<div class='song_show_items'>
+	<ul>
+		<% @categories.each do |category| %>
+			<h1><%= category.name %></h1>
+		<% end %>
+		<% @categories.each do |category| %>
+			<% category.movies.each do |movie| %>
+				<li>
+					<%= link_to(movie.title, movie_path(movie)) %>
+				</li><br>
+			<%end%>
+		<% end %>
+	</ul>
+</div>
