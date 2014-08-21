@@ -73,14 +73,50 @@ footer {
     font-weight: bold;
     height: 30px;
 }
-/*###########################################MOVIEHEADER##########################*/
+/*###########################################TRACKHEADER##########################*/
 .moverboton{
     float: right;
+    display: inline-block;
 }
 .category_form{
     max-width: 930px;
     border: 1px solid #cccccc;
     padding: 10px 10px 30px 10px;
+    display: inline-block;
+}
+.each_tag{
+    margin-left: 20px;
+    display: inline-block;
+    width: 130px;
+}
+.submit_category_search{
+    display: block;
+    margin-left: 20px; 
+    float: right;
+}
+
+#title{
+    width: 300px;
+    display: inline-block;
+}
+.tracks_header{
+    position: relative;
+    padding: 10px 30px 30px 30px;
+    background-color: rgba(209, 250, 206, 0.89);
+    width: 100%;
+    min-height: 275px;
+}
+
+/*###########################################MOVIEHEADER##########################*/
+.moverboton{
+    float: right;
+    display: inline-block;
+}
+.category_form{
+    max-width: 930px;
+    border: 1px solid #cccccc;
+    padding: 10px 10px 30px 10px;
+    display: inline-block;
 }
 .each_category{
     margin-left: 20px;
@@ -104,7 +140,6 @@ footer {
     width: 100%;
     min-height: 275px;
 }
-
 
 /*############################################MOVIE_LIST#########################*/
 .movie_list{

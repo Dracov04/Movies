@@ -19,7 +19,7 @@
 
 <div class="category_form">
 	<form accept-charset="UTF-8" action="/movies/search_category" method="get"><div style="display:none"><input name="utf8" type="hidden" value="✓"></div>
-		<div >
+		<div>
 		<%  Category.all.each do |category| %>
 		   <div class="each_category"> <%= check_box_tag 'category[]', category.name %> <%= category.name %> </div>
 		<% end %>
@@ -53,4 +53,4 @@
 	</ul>
 </section>
 
-<div class='pagination_section'><p ><%= paginate @movies %></p></div>
+<div class='pagination_section'><p><%= paginate @movies %></p></div>

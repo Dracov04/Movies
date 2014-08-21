@@ -1,37 +1,52 @@
-<h1>Index</h1>
-<p>lista de canciones</p>
+<section class="tracks_header">
 
-<%= form_tag(search_song_music_index_path, method: :get) do %>
-<%= text_field_tag('title') %>
-<%= submit_tag('Search song') %>
-<% end %>
+<h1>Tracks</h1>
 
-<form accept-charset="UTF-8" action="/music/search_category" method="get"><div style="display:none"><input name="utf8" type="hidden" value="✓"></div>
-
-<%  Tag.all.each do |tag| %>
-    <%= check_box_tag 'tag[]', tag.name %> <%= tag.name %> <br/>
-<% end %>
-
-<input name="commit" type="submit" value="Search">
-</form>
-
-
+<div class="moverboton">
 <a href="/music/random_songs" class="rotate_song">
 	<span></span>
     <span></span>
     <span>Random<br><br>song!</span>
 </a>
+</div>
 
-
-<% @songs.each do |song| %>
-	<h4>Title: <%= song.title %></h4>
-	<p>Artist: <%= link_to(song.artist.name, artist_path(song.artist)) %></p>
-	<p>Categories: <% song.artist.tags[0..song.artist.tags.length - 2].each do |tag| %>
-		<%= tag.name %>, 
-	<% end %>
-	<%= song.artist.tags.last.name %>.
-	</p>
-	<p>Number of listeners: <%= song.listeners %></p>
-
+<%= form_tag(search_song_music_index_path, method: :get) do %>
+<%= text_field_tag'title', nil, placeholder: 'Search track by title...' %>
+<%= submit_tag'Search', class: 'submit_search' %>
 <% end %>
-<p><%= paginate @songs %></p>
+
+<div class="category_form">
+	<form accept-charset="UTF-8" action="/music/search_category" method="get"><div style="display:none"><input name="utf8" type="hidden" value="✓"></div>
+
+		<div>
+			<%  Tag.all.each do |tag| %>
+			    <div class="each_tag"> <%= check_box_tag 'tag[]', tag.name %> <%= tag.name %> </div>
+			<% end %>
+		</div>
+
+		<div class="submit_category_search">
+			<input name="commit" type="submit" value="Search">
+		</div>
+	</form>
+</div>
+</section>
+
+<section class='movie_list'>
+	<ul><% @songs.each do |song| %>
+		<div class='movie_preview'>
+			<li>
+				<h4>Title: <%= song.title %></h4>
+				<p>Artist: <%= link_to(song.artist.name, artist_path(song.artist)) %></p>
+				<p>Categories: <% song.artist.tags[0..song.artist.tags.length - 2].each do |tag| %>
+					<%= tag.name %>, 
+				<% end %>
+				<%= song.artist.tags.last.name %>.
+				</p>
+				<p>Number of listeners: <%= song.listeners %></p>
+			</li>
+		</div>
+	<% end %>
+	</ul>
+</section>
+
+<div class='pagination_section'><p><%= paginate @songs %></p></div>
