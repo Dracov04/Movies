@@ -1,3 +1,4 @@
+
 <div class= 'movie_show_items'>
 	<% if @songs == [] %>
 		Sorry, there isn´t any song with this title.
@@ -7,17 +8,23 @@
 			<%if song.artist == nil %>
 				
 			<% else %>
-				<h2><%= song.title %></h2>
-				<p>Artist: <%= link_to(song.artist.name, artist_path(song.artist)) %></p>
-				<br>
-				<p>Categories: <% song.artist.tags[0..song.artist.tags.length - 2].each do |tag| %>
-					<%= link_to(tag.name, tag_path(tag)) %>, 
+				<% if song.artist.id == nil %>
+				<% else %>
+					<h2 class="song_title"><%= link_to(song.title, song_path(song)) %></h2>
+					<p>Artist: <%= link_to(song.artist.name, artist_path(song.artist)) %></p>
+					<br>
+					<p>Categories: <% song.artist.tags[0..song.artist.tags.length - 2].each do |tag| %>
+						<%= link_to(tag.name, tag_path(tag)) %>, 
+					<% end %>
+					<% if song.artist.tags.length == 0 %>
+					<%else%>
+						<%= link_to(song.artist.tags.last.name, tag_path(song.artist.tags.last)) %>.
+					<% end %>
+					</p>
+					<br>
+					<p>Number of listeners: <%= song.listeners %></p>
+					<br>
 				<% end %>
-				<%= link_to(song.artist.tags.last.name, tag_path(song.artist.tags.last)) %>.
-				</p>
-				<br>
-				<p>Number of listeners: <%= song.listeners %></p>
-				<br>
 			<% end %>
 		<% end %>
 	<% end %>

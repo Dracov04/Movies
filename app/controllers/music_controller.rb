@@ -15,27 +15,34 @@ class MusicController < ApplicationController
 
 			@lastFM = @lastFM_search['results']['trackmatches']['track']
 
-			@songs = @lastFM.inject(Array.new) do |all_songs, track|
-				song = Song.find_or_create_by(title: track['name'], listeners: track['listeners'], video_url: track['url'])
+			if @lastFM != nil
+				@songs = @lastFM.inject(Array.new) do |all_songs, track|
+					song = Song.find_or_create_by(title: track['name'], listeners: track['listeners'], video_url: track['url'])
 
-				@lastFM_search_artist = LastFM::Artist.get_info(:artist => track['artist'])
+					@lastFM_search_artist = LastFM::Artist.get_info(:artist => track['artist'])
 
-				artist = Artist.find_or_create_by(name: track['artist'], info: @lastFM_search_artist['artist']['bio']['summary'])
-				song.artist = artist if artist.save
-
-				if @lastFM_search_artist['artist']['tags']['tag']
-			 		@lastFM_search_artist['artist']['tags']['tag'].each do |tag|
-			 			tag_obj = Tag.find_or_create_by name: tag['name']
-			 			if artist.tags[3]
-			 				artist.tags
-			 			else
-			 				artist.tags << tag_obj
-			 			end
-			 		end
+					artist = Artist.find_or_create_by(name: track['artist'], info: @lastFM_search_artist['artist']['bio']['summary'])
+					if artist != nil
+						if song.artist 
+						else
+							song.artist = artist
+						end
+					end
+					if @lastFM_search_artist['artist']['tags']
+						if @lastFM_search_artist['artist']['tags']['tag']
+					 		@lastFM_search_artist['artist']['tags']['tag'].each do |tag|
+					 			tag_obj = Tag.find_or_create_by name: tag['name']
+					 			if artist.tags.find_by name: tag_obj.name
+					 			else
+					 				artist.tags << tag_obj
+					 			end
+					 		end
+				 		end
+				 	end
+			 		all_songs << song if song.save
+			 		all_songs
 		 		end
-		 		all_songs << song if song.save
-		 		all_songs
-	 		end
+		 	end
 		end
 	end
 

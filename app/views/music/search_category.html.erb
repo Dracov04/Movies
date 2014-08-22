@@ -6,7 +6,10 @@
 		<% @tags.each do |tag| %>
 			<% tag.artists.each do |artist| %>
 				<li>
-					<%= link_to(artist.name, artist_path(artist)) %>
+					<% if artist.songs == [] %>
+					<% else %>
+						<%= link_to(artist.name, artist_path(artist)) %>
+					<% end %>
 				</li><br>
 			<%end%>
 		<% end %>

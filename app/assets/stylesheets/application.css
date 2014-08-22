@@ -44,6 +44,14 @@ table {
     border-spacing: 0;
 }
 
+.song_title a{
+    text-decoration: none;
+    color:rgba(0, 0, 69, 1);
+}
+.song_title a:hover{
+    text-decoration: overline underline;
+    color: rgb(58, 38, 122);
+}
 /*############################################css######################################################*/
 
 body{
@@ -78,6 +86,10 @@ footer {
     float: right;
     display: inline-block;
 }
+.category_display_form, .content_active{
+    border: 1px solid #cccccc ;
+}
+
 .category_form{
     max-width: 930px;
     border: 1px solid #cccccc;

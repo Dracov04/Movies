@@ -17,7 +17,7 @@
 
 <dl class="accordion" data-accordion="">
   <dd class="accordion-navigation">
-    <a href="#panel1">Search by category &#8616;</a>
+    <a class='category_display_form' href="#panel1">Search by category &#8616;</a>
     <div id="panel1" class="content">
       <dl class="tabs" data-tab="">
       	<div class="category_form">
@@ -50,15 +50,22 @@
 				<% if song == nil %>
 					There isn´t any song
 				<% else %>
-					<li>
-						<h4><%= link_to(song.title, song_path(song)) %></h4>
-						<p>Artist: <%= link_to(song.artist.name, artist_path(song.artist)) %></p>
-						<p>Tags: <% song.artist.tags[0..song.artist.tags.length - 2].each do |tag| %>
-							<%= tag.name %>, 
+					<li>				
+						<% if song.artist == nil %>
+			
+						<% else %>
+							<h4><%= link_to(song.title, song_path(song)) %></h4>
+							<p>Artist: <%= link_to(song.artist.name, artist_path(song.artist)) %></p>
+							<p>Tags: <% song.artist.tags[0..song.artist.tags.length - 2].each do |tag| %>
+								<%= tag.name %>, 
+							<% end %>
+							<% if song.artist.tags.last == nil %>
+							<% else %>
+								<%= song.artist.tags.last.name %>.
+								</p>
+								<p>Number of listeners: <%= song.listeners %></p>
+							<% end %>
 						<% end %>
-						<%= song.artist.tags.last.name %>.
-						</p>
-						<p>Number of listeners: <%= song.listeners %></p>
 					</li>
 				<% end %>
 			</div>

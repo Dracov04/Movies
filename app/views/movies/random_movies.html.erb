@@ -21,7 +21,7 @@
 		<p><li><% @movie.cast_members[0..8].each do |a|%>
 			<%= a.full_name %>, 
 			<%end%>
-		<%= @movie.cast_members[9].full_name %>.
+		<%= @movie.cast_members.last.full_name %>.
 		</li></p>
 		<br>
 		<p><li>Add your Review here: <%= link_to("Add review", new_movie_review_path(@movie)) %></li></p>
