@@ -48,13 +48,13 @@
 		<ul><% @movies.each do |movie| %>
 			<div class='movie_preview'>
 			<% if movie == nil %>
-				There isn´t any song
+				There isn´t any movie
 			<% else %>
 				<li>
 					<h4><%= link_to(movie.title, movie_path(movie.id)) %></h4> <br> ID: <%= movie.id %> -View: <%= movie.counter %>
 					<p><%= link_to("View +1", increment_counter_movie_path(movie), method: :patch) %></p>
 					<p><%= link_to("View -1", reduce_counter_movie_path(movie), method: :patch) %></p>
-					<br><%= link_to(image_tag(movie.poster), movie_path(movie)) %></br>
+					<br><%= link_to(image_tag(movie.poster, alt: movie.poster), movie_path(movie)) %></br>
 
 				</li>
 
